@@ -1,0 +1,2 @@
+# Tested direct dependency. requirements-lock.txt pins the complete environment.
+matplotlib==3.11.2

@@ -1,0 +1,4 @@
+time_s,event,imsi,source_cell_id,target_cell_id,rnti
+40.742171427,UE_HandoverStart,2,1,2,1
+40.744035713,UE_HandoverEndOk,2,1,2,1
+40.748564480,gNB_HandoverEndOk,2,1,2,1

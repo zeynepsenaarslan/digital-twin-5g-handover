@@ -1,0 +1,95 @@
+{
+  "source_root_role": "external ns-3 working checkout",
+  "files": [
+    {
+      "path": "analysis/phase_c1_qos.py",
+      "original_relative_path": "analysis/phase_c1_qos.py",
+      "sha256": "4f61fd664795c84f18391d976a629d7f1bf0f1651f960f8beb219c5c87139cce",
+      "bytes": 18169
+    },
+    {
+      "path": "analysis/phase_c23_plots.py",
+      "original_relative_path": "analysis/phase_c23_plots.py",
+      "sha256": "1e7c610099bcb3e04c3cedc6c093ddfb9098c1d0ec8db58b845922f1649bbca3",
+      "bytes": 17073
+    },
+    {
+      "path": "analysis/requirements-lock.txt",
+      "original_relative_path": "analysis/requirements-lock.txt",
+      "sha256": "c21f471fb3b67fc1b596c5c0a1d25b80cbf1abcc237057261d1a441e62a48166",
+      "bytes": 189
+    },
+    {
+      "path": "analysis/requirements.txt",
+      "original_relative_path": "analysis/requirements.txt",
+      "sha256": "bfdd4ae6e67d557330ad9a08e2da076b59b1acb3bf511df7c6cade5367c3b535",
+      "bytes": 100
+    },
+    {
+      "path": "analysis/test_phase_c1_qos.py",
+      "original_relative_path": "analysis/test_phase_c1_qos.py",
+      "sha256": "f91f714fc0bec0a4cca61b67c3f997fc9c8921bac5ae4f6517e744fc513f8cf0",
+      "bytes": 3654
+    },
+    {
+      "path": "analysis/test_phase_c23_plots.py",
+      "original_relative_path": "analysis/test_phase_c23_plots.py",
+      "sha256": "1c68bb24595f28ad171b5961a776c92a29e174358be2129ac0d6a3e022d27b94",
+      "bytes": 3495
+    },
+    {
+      "path": "analysis/validate_phase_c21_radio.py",
+      "original_relative_path": "analysis/validate_phase_c21_radio.py",
+      "sha256": "3848e5fb00331029510bd98ba1733c0f166f129e97ec93dc0214481e9196ccf6",
+      "bytes": 4719
+    },
+    {
+      "path": "docs/history/PHASE_C21_README.md",
+      "original_relative_path": "analysis/PHASE_C21_README.md",
+      "sha256": "aaa34f4e8fa1738caab75996be38b0327c65c881b3b229ad81f38293f664b66c",
+      "bytes": 6654
+    },
+    {
+      "path": "docs/history/PHASE_C23_README.md",
+      "original_relative_path": "analysis/PHASE_C23_README.md",
+      "sha256": "a6bce3f9e45071ea7a876a381da8f4d298855f1a029ccc90621122735e773f01",
+      "bytes": 6490
+    },
+    {
+      "path": "examples/recorded-handover.csv",
+      "original_relative_path": "dt-output/phase-c21-20261017-170148-b3-45s/handover_events.csv",
+      "sha256": "b2e10e493c1ed3c80dfde496e59ccac74c2910cb12eef6c2ecf8cd362c13ec81",
+      "bytes": 168
+    },
+    {
+      "path": "figures/handover_aligned.svg",
+      "original_relative_path": "dt-output/phase-c23-20261017-plots/handover_aligned.svg",
+      "sha256": "305ea728b638821dd211efe7f2c724170e42ad45b750424ae07953524521b560",
+      "bytes": 53433
+    },
+    {
+      "path": "figures/rsrp.svg",
+      "original_relative_path": "dt-output/phase-c23-20261017-plots/rsrp.svg",
+      "sha256": "0a3330412376d125f1adb99b0b2b1f792108594c63b66020ace961eb8f6bcc29",
+      "bytes": 88929
+    },
+    {
+      "path": "figures/rsrq.svg",
+      "original_relative_path": "dt-output/phase-c23-20261017-plots/rsrq.svg",
+      "sha256": "876985896a44090f40783b4c517e5f4865426ab20cc3a8e4838c10bf549cda9e",
+      "bytes": 88572
+    },
+    {
+      "path": "figures/udp_goodput.svg",
+      "original_relative_path": "dt-output/phase-c23-20261017-plots/udp_goodput.svg",
+      "sha256": "6f68bda9a903c0051608c0cd67952e91992dce38c95c0287dba5a4cff0a32d07",
+      "bytes": 103551
+    },
+    {
+      "path": "simulation/dt-handover-simulation.cc",
+      "original_relative_path": "scratch/dt-handover-simulation.cc",
+      "sha256": "020fe9e6a812bc78042029f265d26fcbba763b66c870d6b130edd8d9a0025e58",
+      "bytes": 36024
+    }
+  ]
+}

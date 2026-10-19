@@ -1,0 +1,36 @@
+{
+  "description": "Extracted recorded results, seed 1/run 1; no full raw dataset bundled",
+  "b3_45s": {
+    "tx_packets_authoritative": 4300,
+    "rx_unique_packets": 4299,
+    "rx_bytes": 2201088,
+    "lost_unique_packets": 1,
+    "missing_sequences": [
+      3974
+    ],
+    "final_pdr_percent": 99.97674418604652,
+    "mean_delay_ms": 2.771225670853687,
+    "mean_abs_delay_variation_ms": 0.1281991624011168,
+    "observation_goodput_mbps": 0.3913045333333333,
+    "producer_average_throughput_mbps": 0.409504744,
+    "max_interarrival_gap_ms": 20.5
+  },
+  "baseline_30s": {
+    "tx_packets_authoritative": 2800,
+    "rx_unique_packets": 2800,
+    "rx_bytes": 1433600,
+    "lost_unique_packets": 0,
+    "missing_sequences": [],
+    "final_pdr_percent": 100.0,
+    "mean_delay_ms": 2.709653755,
+    "mean_abs_delay_variation_ms": 0.004300005001786351,
+    "observation_goodput_mbps": 0.3822933333333333,
+    "producer_average_throughput_mbps": 0.4096,
+    "max_interarrival_gap_ms": 12.5
+  },
+  "provenance": {
+    "qos_b3": "phase-c1-20261017-final-b3-100ms/qos_summary.json",
+    "qos_baseline": "phase-c1-20261017-final-baseline-100ms/qos_summary.json",
+    "events": "phase-c21-20261017-170148-b3-45s/handover_events.csv"
+  }
+}

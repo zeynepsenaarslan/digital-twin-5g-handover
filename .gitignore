@@ -1,0 +1,25 @@
+# Python environments and caches
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mplconfig/
+# Generated experiments and local ns-3 checkouts
+runs/
+dt-output/
+outputs/
+research-backups/
+build/
+cmake-cache/
+ns-3-dev/
+*.pcap
+*.pcapng
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/

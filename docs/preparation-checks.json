@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "copied_files_sha256_verified": 15,
+  "tests_passed": 12,
+  "copied_c1_smoke": "PASS",
+  "copied_c21_validator": "PASS",
+  "copied_c23_smoke": "PASS (5 PNG + 5 SVG)",
+  "relative_markdown_links_checked": 11,
+  "secret_pattern_scan": "PASS (heuristic, not exhaustive)",
+  "largest_file_bytes": 103551,
+  "original_files_preserved": 4550,
+  "original_git_status_head_remote_detached": "UNCHANGED",
+  "external_cpp_integration_or_rebuild": "NOT RUN; original checkout must remain unchanged",
+  "license": "GPL-2.0-only approved for project source code on 2026-10-19; see docs/LICENSING.md",
+  "verification_outputs": "temporary directory, not included"
+}
