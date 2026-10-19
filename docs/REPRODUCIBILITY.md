@@ -100,6 +100,17 @@ Repeat with baseline/reference-baseline directories as needed. The validator che
 .venv-analysis/bin/python -B -m unittest discover   -s analysis -p 'test_phase_*.py' -v
 ```
 
-Plot outputs are PNG at 300 DPI and SVG. The script uses Agg, stores its Matplotlib cache in its new output directory, refuses overwrites, verifies that QoS packets match the radio run, and reads handover markers from actual events. It never fills measurement gaps. SINR is not implemented.
+Plot outputs are PNG at 300 DPI and SVG. The script uses Agg, stores its Matplotlib cache in its new output directory, refuses overwrites, verifies that QoS packets match the radio run, and reads handover markers from actual events. It never fills measurement gaps. Optional C2.2 SINR adds two figures using the verified native traces (no new dependency).
 
 Repository preparation checks exercise copied Python code using existing external CSVs; they do not rebuild the external simulator or establish that an arbitrary fresh dependency installation is compatible.
+
+## C2.2 passive SINR
+
+The current simulation also writes `sinr_measurements.csv`. Rebuild after copying the updated simulation. Use an independent validated same-configuration C2.1 run for the six-CSV regression comparison (full raw references are not bundled).
+
+```bash
+.venv-analysis/bin/python -B analysis/phase_c22_sinr.py --run-dir "$B3" --reference-dir "$REFERENCE_B3"
+.venv-analysis/bin/python -B analysis/phase_c23_plots.py --radio-run "$B3" --qos-dir "${B3}-qos" --sinr-csv "$B3/sinr_measurements.csv" --output-dir "${B3}-sinr-plots"
+```
+
+These commands require actual run data and fresh output directories. See [C2.2 API and validation details](PHASE_C22_README.md). The new validator compares six legacy files including radio_measurements.csv; the C2.1 validator compares five. Reference equality is deliberately strict and is not a guarantee across different dependency versions or scenarios.

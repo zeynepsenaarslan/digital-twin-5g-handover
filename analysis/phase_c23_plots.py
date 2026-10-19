@@ -2,8 +2,8 @@
 """Plot validated PHY and offline QoS CSVs without changing simulation data.
 
 Radio metrics are registered below so future verified metrics can be added
-without changing the loader/renderer. SINR is intentionally absent: C2.2 has
-not been implemented. Points are never interpolated or forward-filled.
+without changing the radio loader. Optional C2.2 SINR comes from a separate,
+verified CSV and parser. Points are never interpolated or forward-filled.
 """
 
 import argparse
@@ -173,7 +173,7 @@ def render(data, output, zoom_seconds):
                          'svg.fonttype':'none', 'axes.spines.top':False,
                          'axes.spines.right':False})
     manifest = {'matplotlib_version':matplotlib.__version__, 'backend':matplotlib.get_backend(),
-                'sinr':'NOT MEASURED; C2.2 not implemented', 'figures':{},
+                'sinr':'NOT PROVIDED' if 'sinr' not in data else 'Native C2.2 PHY trace CSV', 'figures':{},
                 'input_sha256':data['hashes'], 'handover_markers':data['events'],
                 'data_counts':{k:len(data[k]) for k in ('radio','packets','windows','events')},
                 'time_ranges_s':{'radio':[min(r['t'] for r in data['radio']),max(r['t'] for r in data['radio'])],
@@ -226,6 +226,10 @@ def render(data, output, zoom_seconds):
     axes[1].set_xlim(*bounds)
     axes[0].set_title('Time-aligned observations around first handover' if starts else 'Time-aligned observations (no recorded handover)')
     save(fig,'handover_aligned',axes,{'radio_points':counts,'packet_points':len(selected),'bounds_s':bounds})
+    if 'sinr' in data:
+        from phase_c22_sinr import render_sinr, summarize
+        manifest['figures'].update(render_sinr(data['sinr'],output,data['events'],zoom_seconds,mark_events))
+        manifest['sinr_summary']=summarize(data['sinr'])
     if not all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in data['hashes'].items()):
         raise ValueError('Input files changed during plotting')
     manifest['input_preservation'] = 'PASS'
@@ -238,6 +242,7 @@ def main():
     parser.add_argument('--radio-run',type=Path,required=True)
     parser.add_argument('--qos-dir',type=Path,required=True)
     parser.add_argument('--output-dir',type=Path,required=True)
+    parser.add_argument('--sinr-csv',type=Path,help='Optional actual C2.2 sinr_measurements.csv')
     parser.add_argument('--zoom-seconds',type=float,default=1.0,
                         help='Seconds of context on each side of the first UE handover')
     args = parser.parse_args()
@@ -249,6 +254,12 @@ def main():
                 raise ValueError('Output must be separate from source directories')
         if not math.isfinite(args.zoom_seconds) or args.zoom_seconds<=0: raise ValueError('Invalid zoom width')
         data = load_data(args.radio_run,args.qos_dir)
+        if args.sinr_csv:
+            from phase_c22_sinr import load_sinr
+            if args.sinr_csv.resolve() != (args.radio_run/'sinr_measurements.csv').resolve():
+                raise ValueError('Use the SINR file belonging to --radio-run')
+            data['sinr']=load_sinr(args.sinr_csv)
+            data['hashes'][str(args.sinr_csv)]=hashlib.sha256(args.sinr_csv.read_bytes()).hexdigest()
         output.mkdir(parents=True,exist_ok=False)
         manifest = render(data,output,args.zoom_seconds)
         report = ['# Phase C2.3 bilimsel görselleştirme', '',
@@ -268,7 +279,10 @@ def main():
                   'UDP yükü 12 bayt SeqTsHeader içerir; UDP/IP/link başlıkları hariçtir. PHY/MAC throughput değildir.',
                   'Handover çizgileri olay CSV’sindeki zamanlardır; UE ve hedef gNB bitişi ayrı gösterilir.',
                   '200 ms radyo örneklemesi milisaniyelik handover sürecini çözemez.',
-                  'SINR ölçülmedi ve çizilmedi. RRC kuantize RSRP verisi kullanılmadı.',
+                  ('SINR: gerçek ayrı DATA/CONTROL trace verileri; pozitif sonlu oranlar dB’ye çevrilir. '
+                   'Geçersiz dB değerleri çizilmez. Yoğun SVG nokta katmanları rasterleştirilir, örnek azaltılmaz.'
+                   if 'sinr' in data else 'SINR dosyası verilmedi; SINR çizilmedi.') +
+                  ' RRC kuantize RSRP verisi kullanılmadı.',
                   'Grafikler handover ile gecikmenin zaman ilişkisini gösterir; kaybın katmanını veya nedenselliği kanıtlamaz.',
                   '30 s baseline ile 45 s deney karşılaştırmasından nedensel sonuç çıkarılmaz.', '',
                   '## Gerçek olay zamanları', '']

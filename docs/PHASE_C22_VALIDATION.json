@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "legacy_csv_byte_identity": "PASS (six files)",
+  "channels": {
+    "DL_CONTROL": {
+      "samples": 14445,
+      "valid": 14445,
+      "invalid": 0,
+      "invalid_reasons": {},
+      "first_time_s": 3.5713e-05,
+      "last_time_s": 44.995035713,
+      "min_db": -5.130201177313831,
+      "max_db": 68.65285987810897,
+      "cell_counts": {
+        "1": 13156,
+        "2": 1289
+      },
+      "preconnection_rnti_zero": 5,
+      "exact_duplicate_rows": 0,
+      "samples_after_ue_completion": 1288
+    },
+    "DL_DATA": {
+      "samples": 4419,
+      "valid": 4419,
+      "invalid": 0,
+      "invalid_reasons": {},
+      "first_time_s": 0.021107141,
+      "last_time_s": 43.992607141,
+      "min_db": 19.776730044706092,
+      "max_db": 77.02389802104298,
+      "cell_counts": {
+        "1": 4090,
+        "2": 329
+      },
+      "preconnection_rnti_zero": 0,
+      "exact_duplicate_rows": 0,
+      "samples_after_ue_completion": 329
+    }
+  },
+  "total_samples": 18864,
+  "handover_start_s": 40.742171427,
+  "handover_end_s": 40.744035713,
+  "data_trace_emitted": "VERIFIED",
+  "control_trace_emitted": "VERIFIED",
+  "caveat": "A3 uses RSRP; SINR does not cause the recorded handover",
+  "python_tests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "plots": {
+    "figures": 7,
+    "image_files": 14,
+    "input_preservation": "PASS"
+  },
+  "protected_historical_files_unchanged": 102,
+  "build": "PASS: single-job targeted object compilation and generated link",
+  "udp": {
+    "tx": 4300,
+    "rx": 4299,
+    "rx_bytes": 2201088,
+    "lost_sequence": [
+      3974
+    ]
+  },
+  "phase_validation": {
+    "A": "PASS",
+    "B1": "PASS",
+    "B2": "PASS",
+    "B3": "PASS",
+    "C21": "PASS"
+  }
+}

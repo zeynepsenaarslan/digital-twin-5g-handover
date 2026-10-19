@@ -34,7 +34,7 @@ C++ · Python 3 · ns-3.48 · 5G-LENA · Matplotlib · WSL2 / Ubuntu 24.04
 | B3 | Measurement-triggered A3-RSRP X2 handover with real RRC | Validated |
 | C1 | Offline packet delay, delay variation, reception gaps, window goodput | Validated |
 | C2.1 | Passive serving/neighbour RSRP and model-derived RSRQ | Validated |
-| C2.2 | SINR measurement | **NOT YET IMPLEMENTED** |
+| C2.2 | Passive native DL DATA / CONTROL SINR | Validated |
 | C2.3 | Scientific PNG/SVG visualization | Validated |
 | Future | Digital Twin state model, predictive validation, generative AI | Planned; not implemented |
 
@@ -98,11 +98,19 @@ Additional figures: [model-derived RSRQ](figures/rsrq.svg) · [received UDP good
 
 Color identifies measured cell; filled circles identify serving measurements and open triangles neighbour measurements. Event markers come from recorded CSV events. The 200 ms radio reporting interval cannot resolve every millisecond-scale handover stage.
 
+## Phase C2.2: passive SINR validation
+
+The controlled 45 s run recorded **4,419 DL DATA** and **14,445 DL CONTROL** native PHY samples, with no invalid values or exact duplicate records. Both streams continued on cell 2 after handover (329 DATA and 1,288 CONTROL samples after UE completion). Six legacy CSVs were byte-identical to the independent C2.1 reference: handover times, 4,300 TX / 4,299 RX and the existing one-packet loss were unchanged. All 19 Python tests passed.
+
+[Full-duration SINR](figures/sinr_full.svg) · [SINR around recorded handover](figures/sinr_handover.svg) · [API, commands and limitations](docs/PHASE_C22_README.md) · [validation summary](docs/PHASE_C22_VALIDATION.json).
+
+Linear power ratios are converted with `10*log10` only when valid. DATA averages all spectrum bands; CONTROL averages nonzero bands. The sample rates and averaging support differ. The first five CONTROL observations have native RNTI zero before attachment; these are preserved. This is serving-cell PHY observation, not neighbour SINR or SINR-triggered handover. No interpolation is used. Dense full-duration SVG point layers are rasterized; labels and axes remain vector.
+
 ## Repository layout
 
 ```text
 simulation/  Research simulation to integrate into an external ns-3 checkout
-analysis/    Unchanged analyzers, validators, plots, tests, and requirements
+analysis/    Analyzers, validators, plots, tests, and requirements
 figures/     Selected small, original scientific SVG figures
 examples/    Small actual event record and verified result summary
 docs/       Reproduction guide, provenance, portability notes, historical lessons
@@ -136,11 +144,12 @@ The [complete guide](docs/REPRODUCIBILITY.md) includes safe integration, simulat
 - Recorded UDP bytes include the 12-byte SeqTsHeader and exclude UDP/IP/link headers. Application goodput is not PHY/MAC throughput.
 - Absolute consecutive delay variation is not RFC 3550 RTP jitter.
 - A temporary window TX/RX difference does not establish permanent packet loss.
-- No SINR, AI policy, Digital Twin training, full 5G SA signaling, or paper-level performance improvement has been demonstrated.
+- SINR is a modeled native PHY ratio, separately averaged for DATA and CONTROL; it does not trigger the A3-RSRP handover.
+- No AI policy, Digital Twin training, full 5G SA signaling, or paper-level performance improvement has been demonstrated.
 
 ## Roadmap
 
-1. Inspect and implement C2.2 SINR traces with explicit channel/units and regression checks.
+1. Extend passive SINR validation across controlled scenarios; the current single-run C2.2 implementation is complete.
 2. Repeat controlled experiments across seeds, speeds, traffic loads, and handover parameters.
 3. Align mobility/radio/QoS data while preserving missing values and avoiding future-information leakage.
 4. Investigate Digital Twin state prediction and candidate validation.

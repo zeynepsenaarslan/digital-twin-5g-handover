@@ -21,6 +21,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -30,6 +31,64 @@ NS_LOG_COMPONENT_DEFINE("DtHandoverSimulation");
 
 namespace
 {
+
+/** Passively log the native DATA and CONTROL PHY SINR traces. */
+class SinrMeasurementLogger
+{
+  public:
+    /**
+     * Open the separate SINR CSV stream.
+     * @param path New output file path.
+     */
+    explicit SinrMeasurementLogger(const std::string& path)
+        : m_out(path)
+    {
+        NS_ABORT_MSG_IF(!m_out, "Cannot open " << path);
+        m_out << "time_ns,time_s,ue_id,imsi,rnti,cell_id,bwp_id,channel_type,"
+                 "sinr_linear,sinr_db,valid,status,source\n";
+    }
+
+    /**
+     * Observe a native PHY SINR event without changing simulator state.
+     * @param ue Bound UE device, used only to read its full-width IMSI.
+     * @param ueId Bound mobility CSV UE index.
+     * @param channel Bound DATA or CONTROL channel label.
+     * @param cellId Current cell identity provided by the trace.
+     * @param rnti RNTI provided by the trace.
+     * @param linear Native SINR power ratio, before logarithmic conversion.
+     * @param bwpId BWP identity provided by the trace.
+     */
+    void Record(Ptr<NrUeNetDevice> ue, uint32_t ueId, std::string channel,
+                uint16_t cellId, uint16_t rnti, double linear, uint16_t bwpId)
+    {
+        const char* status = !std::isfinite(linear) ? "nonfinite" :
+                             linear <= 0 ? "not_positive" :
+                             linear == std::numeric_limits<double>::max() ?
+                                 "empty_spectrum_sentinel" : "ok";
+        const bool valid = std::string(status) == "ok";
+        const Time now = Simulator::Now();
+        m_out << now.GetNanoSeconds() << ',' << std::fixed << std::setprecision(9)
+              << now.GetSeconds() << ',' << ueId << ',' << ue->GetImsi() << ','
+              << rnti << ',' << cellId << ',' << bwpId << ',' << channel << ','
+              << std::scientific << std::setprecision(17) << linear << ',';
+        if (valid)
+        {
+            m_out << 10.0 * std::log10(linear);
+        }
+        m_out << ',' << valid << ',' << status << ",NrUePhy::"
+              << (channel == "DL_DATA" ? "DlDataSinr" : "DlCtrlSinr") << '\n';
+    }
+
+    /** Close and check the output stream. */
+    void Close()
+    {
+        m_out.close();
+        NS_ABORT_MSG_IF(m_out.fail(), "SINR CSV write failed");
+    }
+
+  private:
+    std::ofstream m_out; ///< Separate passive SINR event CSV.
+};
 
 /** Passively write the existing UE PHY measurement trace as two metric rows. */
 class RadioMeasurementLogger
@@ -536,7 +595,8 @@ int main(int argc, char* argv[])
                         std::filesystem::exists(outputDir + "/udp_packets.csv") ||
                         std::filesystem::exists(outputDir + "/handover_events.csv") ||
                         std::filesystem::exists(outputDir + "/handover_measurements.csv") ||
-                        std::filesystem::exists(outputDir + "/radio_measurements.csv"),
+                        std::filesystem::exists(outputDir + "/radio_measurements.csv") ||
+                        std::filesystem::exists(outputDir + "/sinr_measurements.csv"),
                     "Output CSV already exists; select a fresh --outputDir to preserve results");
     std::filesystem::create_directories(outputDir);
 
@@ -613,6 +673,7 @@ int main(int argc, char* argv[])
     Ipv4InterfaceContainer ueInterfaces = epcHelper->AssignUeIpv4Address(ueDevices);
     auto ueDevice = DynamicCast<NrUeNetDevice>(ueDevices.Get(0));
     RadioMeasurementLogger radioLogger(outputDir + "/radio_measurements.csv");
+    SinrMeasurementLogger sinrLogger(outputDir + "/sinr_measurements.csv");
     for (uint32_t i = 0; i < ueDevices.GetN(); ++i)
     {
         auto device = DynamicCast<NrUeNetDevice>(ueDevices.Get(i));
@@ -623,6 +684,14 @@ int main(int argc, char* argv[])
             NS_ABORT_MSG_IF(!NrHelper::GetUePhy(device, bwp)->TraceConnectWithoutContext(
                                 "ReportUeMeasurements", callback),
                             "Cannot connect passive radio measurement trace");
+            auto phy = NrHelper::GetUePhy(device, bwp);
+            NS_ABORT_MSG_IF(!phy->TraceConnectWithoutContext(
+                                "DlDataSinr", MakeCallback(&SinrMeasurementLogger::Record, &sinrLogger)
+                                                  .Bind(device, i, std::string("DL_DATA"))) ||
+                            !phy->TraceConnectWithoutContext(
+                                "DlCtrlSinr", MakeCallback(&SinrMeasurementLogger::Record, &sinrLogger)
+                                                  .Bind(device, i, std::string("DL_CONTROL"))),
+                            "Cannot connect passive SINR traces");
         }
     }
     auto gnb0Device = DynamicCast<NrGnbNetDevice>(gnbDevices.Get(0));
@@ -717,6 +786,7 @@ int main(int argc, char* argv[])
     trafficLogger.Close();
     handover.Close();
     radioLogger.Close();
+    sinrLogger.Close();
 
     // Validation
     const auto& samples = logger.GetSamples();

@@ -8,10 +8,16 @@
       "bytes": 18169
     },
     {
+      "path": "analysis/phase_c22_sinr.py",
+      "original_relative_path": "analysis/phase_c22_sinr.py",
+      "sha256": "0453d0e669e730ae06ee3ee142be86f03d1d54852e2da8f0cb2a681a6cc7872e",
+      "bytes": 7853
+    },
+    {
       "path": "analysis/phase_c23_plots.py",
       "original_relative_path": "analysis/phase_c23_plots.py",
-      "sha256": "1e7c610099bcb3e04c3cedc6c093ddfb9098c1d0ec8db58b845922f1649bbca3",
-      "bytes": 17073
+      "sha256": "daa9f6b9cf1892341ec7767beed9cb1dee1a4a22dfb38b7b3a5b5adc6bd19a57",
+      "bytes": 18147
     },
     {
       "path": "analysis/requirements-lock.txt",
@@ -32,6 +38,12 @@
       "bytes": 3654
     },
     {
+      "path": "analysis/test_phase_c22_sinr.py",
+      "original_relative_path": "analysis/test_phase_c22_sinr.py",
+      "sha256": "727778570ef6cf9bf5d1d969e3ce7a1110658207e7a2412f8f912ef2c53673d4",
+      "bytes": 3079
+    },
+    {
       "path": "analysis/test_phase_c23_plots.py",
       "original_relative_path": "analysis/test_phase_c23_plots.py",
       "sha256": "1c68bb24595f28ad171b5961a776c92a29e174358be2129ac0d6a3e022d27b94",
@@ -42,6 +54,12 @@
       "original_relative_path": "analysis/validate_phase_c21_radio.py",
       "sha256": "3848e5fb00331029510bd98ba1733c0f166f129e97ec93dc0214481e9196ccf6",
       "bytes": 4719
+    },
+    {
+      "path": "docs/PHASE_C22_README.md",
+      "original_relative_path": "analysis/PHASE_C22_README.md",
+      "sha256": "6f7b9756a35b51810edd9cb3a95f7f736f244d3a3632135eef6f6816e4ce98c2",
+      "bytes": 7854
     },
     {
       "path": "docs/history/PHASE_C21_README.md",
@@ -80,6 +98,18 @@
       "bytes": 88572
     },
     {
+      "path": "figures/sinr_full.svg",
+      "original_relative_path": "dt-output/phase-c22-20261019-140952-plots/sinr_full.svg",
+      "sha256": "87b31229eefd7b8b9a529f418d5b3b3c0332a0af8d40ba790c0ae106712b46b8",
+      "bytes": 1089890
+    },
+    {
+      "path": "figures/sinr_handover.svg",
+      "original_relative_path": "dt-output/phase-c22-20261019-140952-plots/sinr_handover.svg",
+      "sha256": "5088d29a0ff5b44372642d1deef2d55df3e29e47cbcaf4b86f52069e1da26b31",
+      "bytes": 160494
+    },
+    {
       "path": "figures/udp_goodput.svg",
       "original_relative_path": "dt-output/phase-c23-20261017-plots/udp_goodput.svg",
       "sha256": "6f68bda9a903c0051608c0cd67952e91992dce38c95c0287dba5a4cff0a32d07",
@@ -88,8 +118,8 @@
     {
       "path": "simulation/dt-handover-simulation.cc",
       "original_relative_path": "scratch/dt-handover-simulation.cc",
-      "sha256": "020fe9e6a812bc78042029f265d26fcbba763b66c870d6b130edd8d9a0025e58",
-      "bytes": 36024
+      "sha256": "82c97ce5795fc63dea8392c8c8e5be63753aa4a3ae608a1fb474074b80f6757d",
+      "bytes": 39216
     }
   ]
 }

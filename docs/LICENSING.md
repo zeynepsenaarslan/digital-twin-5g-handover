@@ -7,6 +7,8 @@ With the maintainer's explicit approval on 19 October 2026, the following projec
 - `simulation/dt-handover-simulation.cc`
 - `analysis/phase_c1_qos.py`
 - `analysis/phase_c23_plots.py`
+- `analysis/phase_c22_sinr.py`
+- `analysis/test_phase_c22_sinr.py`
 - `analysis/validate_phase_c21_radio.py`
 - `analysis/test_phase_c1_qos.py`
 - `analysis/test_phase_c23_plots.py`
