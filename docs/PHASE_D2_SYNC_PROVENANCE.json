@@ -1,0 +1,104 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "source": "ns3-root/analysis/d2_schemas.json",
+      "target": "analysis/d2_schemas.json",
+      "source_sha256": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c",
+      "existing_sha256": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c",
+      "status": "identical",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c"
+    },
+    {
+      "source": "ns3-root/analysis/phase_d2.py",
+      "target": "analysis/phase_d2.py",
+      "source_sha256": "6b370cd26fe19c99d5e6e3e484e5235ac124d007506f971b37d3e1d7caffd8d1",
+      "existing_sha256": "3aa53b9e7f68d066b4d9e172caf89aa6b0cfb3428f3512a73984463521498d83",
+      "status": "outdated",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "6b370cd26fe19c99d5e6e3e484e5235ac124d007506f971b37d3e1d7caffd8d1"
+    },
+    {
+      "source": "ns3-root/analysis/phase_d2_joining.py",
+      "target": "analysis/phase_d2_joining.py",
+      "source_sha256": "e761a631ac600617313a875a91927ee15c2426e697551e541d4138c3dba32761",
+      "existing_sha256": null,
+      "status": "missing",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "e761a631ac600617313a875a91927ee15c2426e697551e541d4138c3dba32761"
+    },
+    {
+      "source": "ns3-root/analysis/run_d2.py",
+      "target": "analysis/run_d2.py",
+      "source_sha256": "609d032b6d2154c192bfa52da2058a571cbc9d73e80c63b55bd9ea7b66afce05",
+      "existing_sha256": "2d3b0a68b8ede4e4f8a1f4d390edcff4999c6f669cb6a41d8fcd1643713d360b",
+      "status": "outdated",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "609d032b6d2154c192bfa52da2058a571cbc9d73e80c63b55bd9ea7b66afce05"
+    },
+    {
+      "source": "ns3-root/analysis/test_phase_d2.py",
+      "target": "analysis/test_phase_d2.py",
+      "source_sha256": "f200ea1491a3b9bef0c69fc75b5b4318f0c75e3007f2857995f87f7351e2dfa4",
+      "existing_sha256": "f200ea1491a3b9bef0c69fc75b5b4318f0c75e3007f2857995f87f7351e2dfa4",
+      "status": "identical",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "f200ea1491a3b9bef0c69fc75b5b4318f0c75e3007f2857995f87f7351e2dfa4"
+    },
+    {
+      "source": "ns3-root/analysis/test_phase_d2_integration.py",
+      "target": "analysis/test_phase_d2_integration.py",
+      "source_sha256": "dc3c71f17a4ffd78d4123d396539c41e2b8fac06b028c43188095a259f0a6a22",
+      "existing_sha256": "dc3c71f17a4ffd78d4123d396539c41e2b8fac06b028c43188095a259f0a6a22",
+      "status": "identical",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "dc3c71f17a4ffd78d4123d396539c41e2b8fac06b028c43188095a259f0a6a22"
+    },
+    {
+      "source": "ns3-root/analysis/test_phase_d2_joining.py",
+      "target": "analysis/test_phase_d2_joining.py",
+      "source_sha256": "745abdfda04e9b69f0ef72cb98dd0931e9dd2f584bb195e3efdcf9cd48102ff5",
+      "existing_sha256": null,
+      "status": "missing",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "745abdfda04e9b69f0ef72cb98dd0931e9dd2f584bb195e3efdcf9cd48102ff5"
+    },
+    {
+      "source": "ns3-root/scratch/dt-d2-diagnostics.h",
+      "target": "simulation/dt-d2-diagnostics.h",
+      "source_sha256": "8f7244410fc60e86cdc9ea89e526efab4ba62e9b1904b748e34860434f2a111c",
+      "existing_sha256": null,
+      "status": "missing",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "8f7244410fc60e86cdc9ea89e526efab4ba62e9b1904b748e34860434f2a111c"
+    },
+    {
+      "source": "ns3-root/scratch/dt-d2-observers.h",
+      "target": "simulation/dt-d2-observers.h",
+      "source_sha256": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d",
+      "existing_sha256": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d",
+      "status": "identical",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d"
+    },
+    {
+      "source": "ns3-root/scratch/dt-d2-simulation.cc",
+      "target": "simulation/dt-d2-simulation.cc",
+      "source_sha256": "5f0bd3c8589420845a03378e0b8fac27bc46409e912be8a82269691356222d6a",
+      "existing_sha256": "246a902301a9ea2c28955a576c5baddef3a8852132a17fc3682af3e95ae62c38",
+      "status": "outdated",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "5f0bd3c8589420845a03378e0b8fac27bc46409e912be8a82269691356222d6a"
+    },
+    {
+      "source": "ns3-root/scratch/dt-d2-support.h",
+      "target": "simulation/dt-d2-support.h",
+      "source_sha256": "9beedb5ede56b77bb53ddd38479d329580dfe21348b341f677232f9ab59f7409",
+      "existing_sha256": "1d98e01256107b7f5d74db31af377b6ffad9a5ce15cb5e081985df9db141fa9f",
+      "status": "outdated",
+      "destination_scope": "isolated standalone preparation worktree; original standalone worktree unchanged",
+      "prepared_sha256": "9beedb5ede56b77bb53ddd38479d329580dfe21348b341f677232f9ab59f7409"
+    }
+  ]
+}

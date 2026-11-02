@@ -1,18 +1,31 @@
 {
-  "status": "D2_NOT_COMPLETE_NATIVE_HANDOVER_GATE_BLOCKED",
+  "status": "D2_INCOMPLETE_EXPLICIT_23_DBM_UE_PROFILE_REGRESSION_VALIDATED",
+  "algorithm": "sha256",
   "files": {
-    "simulation/dt-d2-simulation.cc": "246a902301a9ea2c28955a576c5baddef3a8852132a17fc3682af3e95ae62c38",
-    "simulation/dt-d2-support.h": "1d98e01256107b7f5d74db31af377b6ffad9a5ce15cb5e081985df9db141fa9f",
-    "simulation/dt-d2-observers.h": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d",
-    "analysis/phase_d2.py": "3aa53b9e7f68d066b4d9e172caf89aa6b0cfb3428f3512a73984463521498d83",
-    "analysis/run_d2.py": "2d3b0a68b8ede4e4f8a1f4d390edcff4999c6f669cb6a41d8fcd1643713d360b",
     "analysis/d2_schemas.json": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c",
+    "analysis/phase_d2.py": "6b370cd26fe19c99d5e6e3e484e5235ac124d007506f971b37d3e1d7caffd8d1",
+    "analysis/phase_d2_joining.py": "e761a631ac600617313a875a91927ee15c2426e697551e541d4138c3dba32761",
+    "analysis/run_d2.py": "609d032b6d2154c192bfa52da2058a571cbc9d73e80c63b55bd9ea7b66afce05",
     "analysis/test_phase_d2.py": "f200ea1491a3b9bef0c69fc75b5b4318f0c75e3007f2857995f87f7351e2dfa4",
     "analysis/test_phase_d2_integration.py": "dc3c71f17a4ffd78d4123d396539c41e2b8fac06b028c43188095a259f0a6a22",
-    "docs/PHASE_D2_README.md": "b28ba5261208cfbc8f3d8e31a237083493254348ed75886ec7b6477fe7d5c849",
-    "docs/PHASE_D2_VALIDATION.json": "0f107e59413275f183ed7335d12225cbaa892abe67b6db888882469ac93489f2"
+    "analysis/test_phase_d2_joining.py": "745abdfda04e9b69f0ef72cb98dd0931e9dd2f584bb195e3efdcf9cd48102ff5",
+    "docs/D2_JOINING_ROOT_CAUSE.md": "4bcecb291b4fd366cdd2bd1518a04705cd9704a970c26b56b98bfbb5b1fbfc49",
+    "docs/PHASE_D2_JOINING_VALIDATION.json": "aca83edaf34ea60370f8ae1312353c621c1b48fedeb1be5c7d2efa0bd7c30d7f",
+    "docs/PHASE_D2_PREPARATION.md": "28bc4bccee03f5a7846c9882cab11ed60b1310fee0225e01f935f5832eac0bf7",
+    "docs/PHASE_D2_PREPARATION_VALIDATION.json": "1c40fc64fb26fee1a5d8e8fb6d3068b4381b4cf2774074728ba92a219d6c1f94",
+    "docs/PHASE_D2_README.md": "03a78a3b7a80502d7ba124d1dbaa7efb471f1fb6d11e722c1fa4cc71d53d57a3",
+    "docs/PHASE_D2_SYNC_PROVENANCE.json": "e41075cfd97f6181e9512e0cd30528db967c5b2da5e9bb34713081e92e33f375",
+    "docs/PHASE_D2_VALIDATION.json": "0f107e59413275f183ed7335d12225cbaa892abe67b6db888882469ac93489f2",
+    "docs/STUDIO_V1_PLAN.md": "208d02fc13e0aae3b7bf5bf10ca8899eba1ac53b0ff3bb606074757520197d55",
+    "docs/history/PHASE_D2_20261030_README.md": "b28ba5261208cfbc8f3d8e31a237083493254348ed75886ec7b6477fe7d5c849",
+    "docs/history/PHASE_D2_20261030_SOURCE_MANIFEST.json": "0434571c87bb86909a2f1100aaef0dd5c572bdb449088e5b51dde947deff899e",
+    "simulation/dt-d2-diagnostics.h": "8f7244410fc60e86cdc9ea89e526efab4ba62e9b1904b748e34860434f2a111c",
+    "simulation/dt-d2-observers.h": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d",
+    "simulation/dt-d2-simulation.cc": "5f0bd3c8589420845a03378e0b8fac27bc46409e912be8a82269691356222d6a",
+    "simulation/dt-d2-support.h": "9beedb5ede56b77bb53ddd38479d329580dfe21348b341f677232f9ab59f7409"
   },
   "unchanged_dependency_sha256": {
     "analysis/phase_c22_sinr.py": "0453d0e669e730ae06ee3ee142be86f03d1d54852e2da8f0cb2a681a6cc7872e"
-  }
+  },
+  "historical_source_manifest": "docs/history/PHASE_D2_20261030_SOURCE_MANIFEST.json"
 }
