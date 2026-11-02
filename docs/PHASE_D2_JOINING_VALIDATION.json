@@ -1,0 +1,879 @@
+{
+  "date": "2026-11-02",
+  "status": "JOINING_VALIDATED_UNDER_CHANGED_EXPLICIT_23_DBM_UE_PROFILE",
+  "d2_stage_marked_complete": false,
+  "hypotheses": {
+    "context_absent_at_timeout": "REFUTED; present until timeout removes it",
+    "interference_dominant": "NOT_SUPPORTED; native SNR and SINR coincide at recorded precision",
+    "noise_limited_srb1_ul_at_inherited_2_dbm": "PROVEN_BY_NATIVE_TRACES_AND_IDENTICAL_PREFIX_POWER_INTERVENTION"
+  },
+  "root_cause": {
+    "status": "ROOT_CAUSE_PROVEN_AT_PHY_DELIVERY_BOUNDARY",
+    "hypothesis_context_absent_before_timeout": false,
+    "hypothesis_interference_dominant": false,
+    "cause": "Native SRB1 UL transport blocks are noise-limited at the inherited fixed 2 dBm profile; no RRC complete reaches target before watchdog.",
+    "target_context_created_ns": 49540064459,
+    "joining_timeout_ns": 49740064459,
+    "watchdog_ns": 200000000,
+    "context_present_during_failure": true,
+    "context_erased_after_failure_same_timestamp": true,
+    "native_tb_trace_rows": 80,
+    "unique_transport_blocks": 40,
+    "corrupt_transport_blocks": 40,
+    "sinr_db_range": [
+      -21.432711096171175,
+      -18.361531242057954
+    ],
+    "max_abs_native_snr_minus_sinr": 0.0,
+    "actual_ul_power_dbm": [
+      2.0
+    ],
+    "srb_counts": {
+      "UE_PDCP": 1,
+      "UE_RLC": 10,
+      "gNB_RLC": 0,
+      "gNB_PDCP": 0
+    },
+    "context_lifecycle": [
+      {
+        "sequence": "10079",
+        "time_ns": "49540064459",
+        "layer": "gNB_RRC",
+        "event": "CONTEXT_CREATED",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "state=8"
+      },
+      {
+        "sequence": "10081",
+        "time_ns": "49540064459",
+        "layer": "gNB_RRC",
+        "event": "AFTER_CREATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10643",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "JOIN_TIMEOUT_FIRED",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10645",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "RELEASE_BEFORE_ERASE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10646",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "AFTER_ERASE",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=0"
+      }
+    ],
+    "last_success": [
+      {
+        "sequence": "1048",
+        "time_ns": "37320064281",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=0;type=0"
+      },
+      {
+        "sequence": "1049",
+        "time_ns": "37320064281",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "3",
+        "detail": "4;7"
+      },
+      {
+        "sequence": "1050",
+        "time_ns": "37320064459",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=0;type=0"
+      },
+      {
+        "sequence": "1052",
+        "time_ns": "37320064459",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=0;type=1"
+      },
+      {
+        "sequence": "1053",
+        "time_ns": "37320064459",
+        "layer": "gNB_RRC",
+        "event": "AFTER_CREATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "1054",
+        "time_ns": "37320064574",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=0;type=1"
+      },
+      {
+        "sequence": "1056",
+        "time_ns": "37320064574",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "3",
+        "detail": "7;10"
+      },
+      {
+        "sequence": "1057",
+        "time_ns": "37320064574",
+        "layer": "gNB_RRC",
+        "event": "HO_COMMAND_DISPATCH",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "3",
+        "detail": "target=3"
+      },
+      {
+        "sequence": "1058",
+        "time_ns": "37320064574",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=4;type=0"
+      },
+      {
+        "sequence": "1059",
+        "time_ns": "37320064608",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=4;type=0"
+      },
+      {
+        "sequence": "1068",
+        "time_ns": "37322171427",
+        "layer": "UE_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "3",
+        "detail": "9;10"
+      },
+      {
+        "sequence": "1070",
+        "time_ns": "37322171427",
+        "layer": "UE_RRC",
+        "event": "SRB1_CREATED",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": ""
+      },
+      {
+        "sequence": "1080",
+        "time_ns": "37324035713",
+        "layer": "UE_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "10;9"
+      },
+      {
+        "sequence": "1098",
+        "time_ns": "37328564281",
+        "layer": "gNB_RRC",
+        "event": "RECONFIG_COMPLETE_RECEIVED",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": ""
+      },
+      {
+        "sequence": "1099",
+        "time_ns": "37328564281",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "8;9"
+      },
+      {
+        "sequence": "1100",
+        "time_ns": "37328564480",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=5;type=0"
+      },
+      {
+        "sequence": "1101",
+        "time_ns": "37328564480",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "9;4"
+      },
+      {
+        "sequence": "1103",
+        "time_ns": "37328564480",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "4;5"
+      },
+      {
+        "sequence": "1104",
+        "time_ns": "37328564513",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=5;type=0"
+      },
+      {
+        "sequence": "1105",
+        "time_ns": "37328564513",
+        "layer": "gNB_RRC",
+        "event": "RELEASE_BEFORE_ERASE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "3",
+        "detail": "present=1;state=10"
+      },
+      {
+        "sequence": "1140",
+        "time_ns": "37335064281",
+        "layer": "gNB_RRC",
+        "event": "RECONFIG_COMPLETE_RECEIVED",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": ""
+      },
+      {
+        "sequence": "1141",
+        "time_ns": "37335064281",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "5;4"
+      }
+    ],
+    "attempt6_chain": [
+      {
+        "sequence": "10076",
+        "time_ns": "49540064281",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=0;type=0"
+      },
+      {
+        "sequence": "10077",
+        "time_ns": "49540064281",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "4;7"
+      },
+      {
+        "sequence": "10078",
+        "time_ns": "49540064459",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=0;type=0"
+      },
+      {
+        "sequence": "10079",
+        "time_ns": "49540064459",
+        "layer": "gNB_RRC",
+        "event": "CONTEXT_CREATED",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "state=8"
+      },
+      {
+        "sequence": "10080",
+        "time_ns": "49540064459",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=0;type=1"
+      },
+      {
+        "sequence": "10081",
+        "time_ns": "49540064459",
+        "layer": "gNB_RRC",
+        "event": "AFTER_CREATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10082",
+        "time_ns": "49540064574",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=0;type=1"
+      },
+      {
+        "sequence": "10084",
+        "time_ns": "49540064574",
+        "layer": "gNB_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "7;10"
+      },
+      {
+        "sequence": "10085",
+        "time_ns": "49540064574",
+        "layer": "gNB_RRC",
+        "event": "HO_COMMAND_DISPATCH",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "target=2"
+      },
+      {
+        "sequence": "10086",
+        "time_ns": "49540064574",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "3",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=4;type=0"
+      },
+      {
+        "sequence": "10087",
+        "time_ns": "49540064608",
+        "layer": "X2_IP",
+        "event": "RX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.14;dst=12.0.0.13;procedure=4;type=0"
+      },
+      {
+        "sequence": "10096",
+        "time_ns": "49542171427",
+        "layer": "UE_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "3",
+        "rnti": "4",
+        "detail": "9;10"
+      },
+      {
+        "sequence": "10098",
+        "time_ns": "49542171427",
+        "layer": "UE_RRC",
+        "event": "SRB1_CREATED",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": ""
+      },
+      {
+        "sequence": "10105",
+        "time_ns": "49544035713",
+        "layer": "UE_MAC",
+        "event": "RA_SUCCESS",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": ""
+      },
+      {
+        "sequence": "10106",
+        "time_ns": "49544035713",
+        "layer": "UE_PDCP",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=3"
+      },
+      {
+        "sequence": "10108",
+        "time_ns": "49544035713",
+        "layer": "UE_RRC",
+        "event": "STATE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "10;9"
+      },
+      {
+        "sequence": "10116",
+        "time_ns": "49547035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10170",
+        "time_ns": "49567035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10224",
+        "time_ns": "49587035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10278",
+        "time_ns": "49607035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10332",
+        "time_ns": "49627035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10386",
+        "time_ns": "49647035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10440",
+        "time_ns": "49667035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10494",
+        "time_ns": "49687035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10548",
+        "time_ns": "49707035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10602",
+        "time_ns": "49727035713",
+        "layer": "UE_RLC",
+        "event": "TX",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "lcid=1;bytes=7"
+      },
+      {
+        "sequence": "10643",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "JOIN_TIMEOUT_FIRED",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10644",
+        "time_ns": "49740064459",
+        "layer": "X2_IP",
+        "event": "TX",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "0",
+        "detail": "src=12.0.0.13;dst=12.0.0.14;procedure=0;type=2"
+      },
+      {
+        "sequence": "10645",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "RELEASE_BEFORE_ERASE",
+        "imsi": "4",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=1;state=8"
+      },
+      {
+        "sequence": "10646",
+        "time_ns": "49740064459",
+        "layer": "gNB_RRC",
+        "event": "AFTER_ERASE",
+        "imsi": "0",
+        "cell_id": "2",
+        "rnti": "5",
+        "detail": "present=0"
+      }
+    ],
+    "timeline_sha256": "5621567c2c86707b78c21ff88c1168854af3c912ba27e0cad2553d2beee52975"
+  },
+  "controlled_intervention": {
+    "identical_pre_intervention_rows": 10106,
+    "intervention": {
+      "sequence": "10106",
+      "time_ns": "49544035713",
+      "layer": "EXPERIMENT",
+      "event": "UE_POWER_STEP",
+      "imsi": "4",
+      "cell_id": "2",
+      "rnti": "5",
+      "detail": "before_dbm=2.000000;after_dbm=23"
+    },
+    "baseline_first_tb": {
+      "sequence": "10122",
+      "time_ns": "49548464281",
+      "layer": "gNB_PHY",
+      "event": "UL_TB",
+      "imsi": "4",
+      "cell_id": "2",
+      "rnti": "5",
+      "detail": "bytes=43;corrupt=1;sinr=0.007490;rv=0;rb=53;tbler=1.000000"
+    },
+    "probe_first_tb": {
+      "sequence": "10123",
+      "time_ns": "49548464281",
+      "layer": "gNB_PHY",
+      "event": "UL_TB",
+      "imsi": "4",
+      "cell_id": "2",
+      "rnti": "5",
+      "detail": "bytes=43;corrupt=0;sinr=0.942922;rv=0;rb=53;tbler=0.000000"
+    },
+    "target_received_complete": {
+      "sequence": "10127",
+      "time_ns": "49548564281",
+      "layer": "gNB_RRC",
+      "event": "RECONFIG_COMPLETE_RECEIVED",
+      "imsi": "4",
+      "cell_id": "2",
+      "rnti": "5",
+      "detail": ""
+    },
+    "actual_snr_gain_db": 20.999939509968808,
+    "native_watchdog_changed": false,
+    "seed": 1,
+    "run": 1
+  },
+  "failed_baseline_reproductions": [
+    {
+      "run": "dt-output/d2-joining-repro01",
+      "raw_csv_count": 19,
+      "all_raw_csv_byte_identical_to_failed_baseline": true
+    },
+    {
+      "run": "dt-output/d2-joining-repro02",
+      "raw_csv_count": 19,
+      "all_raw_csv_byte_identical_to_failed_baseline": true
+    }
+  ],
+  "fixed_profile_repeatability": "ALL_RAW_CSV_BYTE_IDENTICAL",
+  "regressions": [
+    {
+      "label": "fixed-a",
+      "seed": "1",
+      "run": "1",
+      "producer_returncode": 0,
+      "validation": "PASS",
+      "ue_handover_completions": 19,
+      "native_failures": [],
+      "missing_contexts": [],
+      "pending_gnb_completions": [],
+      "tx": 44000,
+      "rx": 41826,
+      "profile": {
+        "ue_tx_power_dbm": 23.0,
+        "uplink_power_control": false,
+        "joining_power_probe": false,
+        "origin": "explicit"
+      },
+      "input_sha256": {
+        "x2_registry_v3.csv": "6d15d7865da24f84b4994ff33752e6f6c2503bf9010e877b5c25aa1e18bb6f43",
+        "trace_registry_v3.csv": "9b8c96e857c1136133f7ecae2efd6e2482255c70c3fc575c638a1a36ddf3acef",
+        "prb_slots_v3.csv": "701f36afe32b0c2b724340e52596d95b4431594993ab9c492ffbbcf322e0734c",
+        "cell_ingress_v3.csv": "9a1ffd94128060c3308531c683983664647b5f5096e60c8c08277f80f4bc0738",
+        "run_config_v3.csv": "a7e1a19285cb3c27f060138e2a6c76e8fe9458cedaadd3b8fe1a5c6954a25298",
+        "rrc_measurements_v3.csv": "9e1d5461d382366799e549b5e192ab9b315805147254fd14c1ff7195cc949dc3",
+        "ue_registry_v3.csv": "9c0648b9e408dc9e8d4fc5bdf9a5ed007636f706298bec0605dff429550ce83f",
+        "cell_registry_v3.csv": "77e234e07cf9f34779f795d8888085f7bcc1ac47a9397391590a37241361eda8",
+        "udp_packets_v3.csv": "04b06f24158d4f36b8417b647c3d29720488c6bf7c91e14fbd4cbe47a9954cd4",
+        "handover_events_v3.csv": "4041d80edf55cf484806b9bf86950f4a9965e1c160a09cc2e2dc18af4d41d6d0",
+        "udp_summary_v3.csv": "5fad3717fbd7a8d3889283c75668f44eba4338ccd932f2ef7b514539a348ffb5",
+        "flow_monitor_v3.csv": "2abb1864c3f5a4d2b7a6b4e70f1f90179970795488744a7a52c6b4ec365626af",
+        "ue_mobility_v3.csv": "294236276af9c35067efa50f5aa630885b40fc2cf787f065f983020ce96cf419",
+        "serving_cells_v3.csv": "1ebf3d2aa9c7a0275576a09f174dddffd48c3ab96cc87042e76ddb777ff2b357",
+        "radio_measurements.csv": "f40057615a2e1fbcedf4587eda78c09945116635245db6805b327e10db28d655",
+        "sinr_measurements.csv": "3847662004d28cdaced443fda02daf62d6e651f5df1bf837376d8f8f879c1903",
+        "radio_settings_v3.csv": "115ae4825d4c13e68019d8ba3dbe1430c9b4679945203e3a47230935d8fd11b0",
+        "gnb_failures_v3.csv": "bc887bbc29dddf3cbf32c2392525ac50bb577fc09b0b7aaf61b4e4bce1bcf4b5",
+        "gnb_context_v3.csv": "bf35042c167463c498d28ce35a1d60e9d117fcf3060fad778f2849ee6370bf63",
+        "radio_profile.json": "3e3ffab5fa3fa25e8d538ac9cc0ed8943f579c968d653d772b41d4f4e9c35920"
+      }
+    },
+    {
+      "label": "fixed-b",
+      "seed": "1",
+      "run": "1",
+      "producer_returncode": 0,
+      "validation": "PASS",
+      "ue_handover_completions": 19,
+      "native_failures": [],
+      "missing_contexts": [],
+      "pending_gnb_completions": [],
+      "tx": 44000,
+      "rx": 41826,
+      "profile": {
+        "ue_tx_power_dbm": 23.0,
+        "uplink_power_control": false,
+        "joining_power_probe": false,
+        "origin": "explicit"
+      },
+      "input_sha256": {
+        "x2_registry_v3.csv": "6d15d7865da24f84b4994ff33752e6f6c2503bf9010e877b5c25aa1e18bb6f43",
+        "trace_registry_v3.csv": "9b8c96e857c1136133f7ecae2efd6e2482255c70c3fc575c638a1a36ddf3acef",
+        "prb_slots_v3.csv": "701f36afe32b0c2b724340e52596d95b4431594993ab9c492ffbbcf322e0734c",
+        "cell_ingress_v3.csv": "9a1ffd94128060c3308531c683983664647b5f5096e60c8c08277f80f4bc0738",
+        "run_config_v3.csv": "a7e1a19285cb3c27f060138e2a6c76e8fe9458cedaadd3b8fe1a5c6954a25298",
+        "rrc_measurements_v3.csv": "9e1d5461d382366799e549b5e192ab9b315805147254fd14c1ff7195cc949dc3",
+        "ue_registry_v3.csv": "9c0648b9e408dc9e8d4fc5bdf9a5ed007636f706298bec0605dff429550ce83f",
+        "cell_registry_v3.csv": "77e234e07cf9f34779f795d8888085f7bcc1ac47a9397391590a37241361eda8",
+        "udp_packets_v3.csv": "04b06f24158d4f36b8417b647c3d29720488c6bf7c91e14fbd4cbe47a9954cd4",
+        "handover_events_v3.csv": "4041d80edf55cf484806b9bf86950f4a9965e1c160a09cc2e2dc18af4d41d6d0",
+        "udp_summary_v3.csv": "5fad3717fbd7a8d3889283c75668f44eba4338ccd932f2ef7b514539a348ffb5",
+        "flow_monitor_v3.csv": "2abb1864c3f5a4d2b7a6b4e70f1f90179970795488744a7a52c6b4ec365626af",
+        "ue_mobility_v3.csv": "294236276af9c35067efa50f5aa630885b40fc2cf787f065f983020ce96cf419",
+        "serving_cells_v3.csv": "1ebf3d2aa9c7a0275576a09f174dddffd48c3ab96cc87042e76ddb777ff2b357",
+        "radio_measurements.csv": "f40057615a2e1fbcedf4587eda78c09945116635245db6805b327e10db28d655",
+        "sinr_measurements.csv": "3847662004d28cdaced443fda02daf62d6e651f5df1bf837376d8f8f879c1903",
+        "radio_settings_v3.csv": "115ae4825d4c13e68019d8ba3dbe1430c9b4679945203e3a47230935d8fd11b0",
+        "gnb_failures_v3.csv": "bc887bbc29dddf3cbf32c2392525ac50bb577fc09b0b7aaf61b4e4bce1bcf4b5",
+        "gnb_context_v3.csv": "bf35042c167463c498d28ce35a1d60e9d117fcf3060fad778f2849ee6370bf63",
+        "radio_profile.json": "3e3ffab5fa3fa25e8d538ac9cc0ed8943f579c968d653d772b41d4f4e9c35920"
+      }
+    },
+    {
+      "label": "seed2",
+      "seed": "2",
+      "run": "1",
+      "producer_returncode": 0,
+      "validation": "VALIDATED_SINGLE_RUN",
+      "ue_handover_completions": 5,
+      "native_failures": [],
+      "missing_contexts": [],
+      "pending_gnb_completions": [],
+      "tx": 44000,
+      "rx": 41710,
+      "profile": {
+        "ue_tx_power_dbm": 23.0,
+        "uplink_power_control": false,
+        "joining_power_probe": false,
+        "origin": "explicit"
+      },
+      "input_sha256": {
+        "x2_registry_v3.csv": "6d15d7865da24f84b4994ff33752e6f6c2503bf9010e877b5c25aa1e18bb6f43",
+        "trace_registry_v3.csv": "9b8c96e857c1136133f7ecae2efd6e2482255c70c3fc575c638a1a36ddf3acef",
+        "prb_slots_v3.csv": "3d3583697e45be294fab1f7b58140c3372f219c29d915a8b358f629f7d1f99e3",
+        "cell_ingress_v3.csv": "c798c68e5dc73f16a151cd0d5e3815a4cd119d88f91b77eaefce1a5df0726904",
+        "run_config_v3.csv": "ae0b97a92845d248e34951cd6b7d9e3153b34b32815ba566a271058e44d2ba8a",
+        "rrc_measurements_v3.csv": "d1b34d5f7ad56a4fe2bbdc6035c9c442900b53db33d6ed6ec436d2a4db5884ed",
+        "ue_registry_v3.csv": "9c0648b9e408dc9e8d4fc5bdf9a5ed007636f706298bec0605dff429550ce83f",
+        "cell_registry_v3.csv": "77e234e07cf9f34779f795d8888085f7bcc1ac47a9397391590a37241361eda8",
+        "udp_packets_v3.csv": "d9d287dfc4e8135e8e7daaa0892c03fbd03947e5e45c00995263a183678ae5cf",
+        "handover_events_v3.csv": "d2e76a9e8019c97775d4c04d7b0c78dcb414d905dface8e1ba90dded012b831d",
+        "udp_summary_v3.csv": "39fbd49c3f981a27a924a34d9a73d077331edaa140774dfa6738dd562e0146e9",
+        "flow_monitor_v3.csv": "f4555c54f2e3719e3fc30a74ace117689a27522ab2c0d7f7f6615ea2b5e656e3",
+        "ue_mobility_v3.csv": "0a39f84e107da03bff3cb0d39f5f82279790ac97fab474f841691edfdb989dd2",
+        "serving_cells_v3.csv": "5605482f854adcdd90938c67970401590bf85e41aa8abac343abb9da68462ebd",
+        "radio_measurements.csv": "8df13130974c9d8095998a4671507b0e56ddbba11945607de9b004262ce9ec74",
+        "sinr_measurements.csv": "1d38fa2171ffa759d6ecfbddc6f3ff6172b6df5f6ab4ad8d7931dacf7787258c",
+        "radio_settings_v3.csv": "115ae4825d4c13e68019d8ba3dbe1430c9b4679945203e3a47230935d8fd11b0",
+        "gnb_failures_v3.csv": "bc887bbc29dddf3cbf32c2392525ac50bb577fc09b0b7aaf61b4e4bce1bcf4b5",
+        "gnb_context_v3.csv": "8ebfc07b28c7d8bae03361109d0aa95d6b61fcf20d970bc0732477c27d5e2c99",
+        "radio_profile.json": "3e3ffab5fa3fa25e8d538ac9cc0ed8943f579c968d653d772b41d4f4e9c35920"
+      }
+    },
+    {
+      "label": "seed3",
+      "seed": "3",
+      "run": "1",
+      "producer_returncode": 0,
+      "validation": "VALIDATED_SINGLE_RUN",
+      "ue_handover_completions": 12,
+      "native_failures": [],
+      "missing_contexts": [],
+      "pending_gnb_completions": [],
+      "tx": 44000,
+      "rx": 42647,
+      "profile": {
+        "ue_tx_power_dbm": 23.0,
+        "uplink_power_control": false,
+        "joining_power_probe": false,
+        "origin": "explicit"
+      },
+      "input_sha256": {
+        "x2_registry_v3.csv": "6d15d7865da24f84b4994ff33752e6f6c2503bf9010e877b5c25aa1e18bb6f43",
+        "trace_registry_v3.csv": "9b8c96e857c1136133f7ecae2efd6e2482255c70c3fc575c638a1a36ddf3acef",
+        "prb_slots_v3.csv": "84c3c55919b56daef8ea584216eb97a70727814008e40f7519671bfa885913d3",
+        "cell_ingress_v3.csv": "c6aefaa3671748372930b5c4019f36a454945ad5b88388dade045c67f658b2bf",
+        "run_config_v3.csv": "871e735cdadc700fd04f8181c21278f26c3a714d8c650f56d412349dabcdc402",
+        "rrc_measurements_v3.csv": "8cf8b67cc78ab0b7fe6d399ae2a5dde614dd66b47275aaaba67a53feb8ded016",
+        "ue_registry_v3.csv": "9c0648b9e408dc9e8d4fc5bdf9a5ed007636f706298bec0605dff429550ce83f",
+        "cell_registry_v3.csv": "77e234e07cf9f34779f795d8888085f7bcc1ac47a9397391590a37241361eda8",
+        "udp_packets_v3.csv": "702619a21466a40339aaca24320cd0312c8f4502015d0e752045bc147b8ced8e",
+        "handover_events_v3.csv": "630a1c821f412b25ec703d12952228b1b479e8767a7a0b1aeebfaaa20ac7f42a",
+        "udp_summary_v3.csv": "47a25c6891f65d220de258f6d4a688d5daa73e3b7b38adc36a8c195e6328d97d",
+        "flow_monitor_v3.csv": "3f0bda23414ffe614f298b9090f7b7c02e8347260d260dc6827dbc07c24d7303",
+        "ue_mobility_v3.csv": "dba8c6b8b5de5a3b15099ce54f5ce033ecff4e2a77383fd42b749540ee929324",
+        "serving_cells_v3.csv": "849ad99df005a92603ab3b3f8e7d032c1a8ad24ae17dca5a9c625c3c94a8695f",
+        "radio_measurements.csv": "558d20c5993be456e507fc42835a88049cb35d6eb2486c5fa2d1d5e784728ec2",
+        "sinr_measurements.csv": "ca0df216bc26b1e8a1ed1d6f743c04f35058b270634f45b62469287c13da256d",
+        "radio_settings_v3.csv": "115ae4825d4c13e68019d8ba3dbe1430c9b4679945203e3a47230935d8fd11b0",
+        "gnb_failures_v3.csv": "bc887bbc29dddf3cbf32c2392525ac50bb577fc09b0b7aaf61b4e4bce1bcf4b5",
+        "gnb_context_v3.csv": "1b216a72d32f82ee4aac323143ae6d13d59ba05d787f124dcd22e2abd4ca6272",
+        "radio_profile.json": "3e3ffab5fa3fa25e8d538ac9cc0ed8943f579c968d653d772b41d4f4e9c35920"
+      }
+    }
+  ],
+  "tests": {
+    "python_original_69": "PASS",
+    "python_total_including_8_new_proof_tests": 77,
+    "python_failed": 0,
+    "native_quick_nr_handover_target": "PASS",
+    "d1_simulation": "PASS",
+    "d1_offline_validator": "PASS"
+  },
+  "invariance": {
+    "protected_count": 49,
+    "protected_unchanged": true,
+    "ns3_index_unchanged": true,
+    "standalone_index_unchanged": true,
+    "d1_release_csv_count": 12,
+    "d1_release_csv_byte_identical": true,
+    "executable_identical_after_doxygen_edit": true
+  },
+  "changes": {
+    "scope": "D2 only; native source and D1 sources not edited",
+    "ue_tx_power_dbm": 23,
+    "uplink_power_control": false,
+    "hysteresis_db": 1.5,
+    "ttt_ms": 128,
+    "joining_watchdog_ms": 200
+  },
+  "limitations": [
+    "23 dBm is an explicit radio-profile correction, not unchanged-condition performance improvement.",
+    "The historical 2 dBm radio profile still legitimately reproduces the failure.",
+    "Individual propagation/shadowing/fading/antenna contributions to low SNR were not decomposed.",
+    "Native failed-handover recovery remains a separate limitation; source HANDOVER_LEAVING watchdog cancellation does not restore UE-target consistency.",
+    "Three seeds are a bounded regression, not reliability assurance; packet losses remain.",
+    "D2 stage is not marked complete; remaining roadmap metrics/data work are separate."
+  ],
+  "publication_provenance": {
+    "source": "ns3-root/research-backups/d2-joining-investigation/joining-validation.json",
+    "source_sha256": "32d569a0e182eac612a687ba3a63d9ef324cf222c34323e2a9fa4d9bd24d968c",
+    "note": "Recorded campaign, not new simulations. Current independent checks are in PHASE_D2_PREPARATION_VALIDATION.json. Status wording clarifies changed radio conditions; original local evidence remains unchanged."
+  }
+}

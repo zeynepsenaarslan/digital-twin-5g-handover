@@ -1,0 +1,370 @@
+{
+  "status": "BLOCKED_NATIVE_HANDOVER",
+  "unattributed_tx_without_ingress": 0,
+  "native_failures": [
+    {
+      "time_s": "49.740064459",
+      "ue_id": "1",
+      "imsi": "4",
+      "cell_id": "2",
+      "rnti": "5",
+      "event": "HandoverFailureJoining",
+      "attempt_id": 6,
+      "attempt_link_valid": 1
+    }
+  ],
+  "final_context_issues": [
+    {
+      "ue_id": "1",
+      "issue": "missing_gNB_context",
+      "cell_id": "2",
+      "rnti": "5"
+    }
+  ],
+  "pending_gnb_completions": [
+    {
+      "ue_id": "1",
+      "attempt_id": 6,
+      "source": "3",
+      "target": "2"
+    }
+  ],
+  "duration_s": 90.0,
+  "config": {
+    "scenario": "d2",
+    "duration_s": "90.000000000",
+    "sampling_ms": "30",
+    "seed": "1",
+    "run": "1",
+    "enable_handover": "1",
+    "carrier_hz": "3500000000",
+    "bandwidth_hz": "20000000",
+    "hysteresis_db": "1.5",
+    "ttt_ms": "128",
+    "traffic_interval_ms": "10",
+    "udp_bytes": "512",
+    "turn_s": "40.000000000",
+    "stop_motion_s": "80.000000000"
+  },
+  "input_sha256": {
+    "x2_registry_v3.csv": "6d15d7865da24f84b4994ff33752e6f6c2503bf9010e877b5c25aa1e18bb6f43",
+    "trace_registry_v3.csv": "9b8c96e857c1136133f7ecae2efd6e2482255c70c3fc575c638a1a36ddf3acef",
+    "prb_slots_v3.csv": "8bbc6f94cef785829ccf6a49ffb6000345cc08d695f8687b06ddfd2b4866bd51",
+    "cell_ingress_v3.csv": "7a974157ff721f48633c2d6fa569ed2567c0e3bf764ea7b3d41c96c9fa7e952a",
+    "run_config_v3.csv": "a7e1a19285cb3c27f060138e2a6c76e8fe9458cedaadd3b8fe1a5c6954a25298",
+    "rrc_measurements_v3.csv": "54772ba48e80664b9906f4acf96cd668d349c606868df493610eec7e54df6226",
+    "ue_registry_v3.csv": "9c0648b9e408dc9e8d4fc5bdf9a5ed007636f706298bec0605dff429550ce83f",
+    "cell_registry_v3.csv": "77e234e07cf9f34779f795d8888085f7bcc1ac47a9397391590a37241361eda8",
+    "udp_packets_v3.csv": "70fe93670ef1b803dc3761ffb5cfab528e33d96aaa90d818527b70d0636d723e",
+    "handover_events_v3.csv": "2d62d29468e6e04d3633f0018c9882f07117e3c952e9989a7a32c78cf16a008f",
+    "udp_summary_v3.csv": "bcadec19f8bd4c5184a6af47513a626f82ab6731a3e6848f06b560a7f252acd8",
+    "flow_monitor_v3.csv": "3b8bd3bac76d28fc55b5a5df4fb253a341103109ea85fec6b7565ef5f41841cf",
+    "ue_mobility_v3.csv": "c2428da4f1b863548cedeab3865aa12aa39364e063369fbe55de295c09d651f0",
+    "serving_cells_v3.csv": "3678c938e57a645ac8a4e20dacbbf98b88ca60c07a87768c4de5b3f336291afa",
+    "radio_measurements.csv": "fc2924bcf146603b48f88ee4bee6a722f1b4a305610626983318c8c051cafe45",
+    "sinr_measurements.csv": "0e5f19983575687192378973f744d86497bf1c467840fdbe68f61a4b6410ae1f",
+    "radio_settings_v3.csv": "ac51912f4c51e469161a093c691a3a40b9d107d8033cc6a19ffbb4f1d28ac2b3",
+    "gnb_failures_v3.csv": "b2d5ec4373b425a61ea6b8891be48098e120f250ad80595dc9ab0ca99cad610f",
+    "gnb_context_v3.csv": "c13c5585fa47115177a9e8d07fce2a2bb7acc0a2ae3be11528fe661cd4f36264"
+  },
+  "simultaneous_two_neighbour_epochs": {
+    "0": 450,
+    "1": 450,
+    "2": 450,
+    "3": 450,
+    "4": 450
+  },
+  "prb": {
+    "1": {
+      "slots": 180000,
+      "allocated_prb_symbols": 4214560,
+      "available_prb_symbols": 114480159,
+      "idle_slots": 159802,
+      "missing_slot_indices": [
+        1
+      ]
+    },
+    "2": {
+      "slots": 180000,
+      "allocated_prb_symbols": 1709356,
+      "available_prb_symbols": 114480159,
+      "idle_slots": 170642,
+      "missing_slot_indices": [
+        1
+      ]
+    },
+    "3": {
+      "slots": 180000,
+      "allocated_prb_symbols": 4910503,
+      "available_prb_symbols": 114480159,
+      "idle_slots": 160334,
+      "missing_slot_indices": [
+        1
+      ]
+    }
+  },
+  "cell_qos": {
+    "1": {
+      "ingress_packets": 17180,
+      "rx_packets": 16483,
+      "rx_bytes": 8439296,
+      "undelivered": 697,
+      "delivery_fraction": 0.9594295692665891,
+      "mean_received_delay_ms": 15.050578954377237
+    },
+    "2": {
+      "ingress_packets": 3733,
+      "rx_packets": 3019,
+      "rx_bytes": 1545728,
+      "undelivered": 714,
+      "delivery_fraction": 0.8087329225823734,
+      "mean_received_delay_ms": 63.14482036800265
+    },
+    "3": {
+      "ingress_packets": 23087,
+      "rx_packets": 19120,
+      "rx_bytes": 9789440,
+      "undelivered": 3967,
+      "delivery_fraction": 0.8281716983583836,
+      "mean_received_delay_ms": 4.2222911710251045
+    }
+  },
+  "ues": {
+    "0": {
+      "tx": 8800,
+      "rx": 8103,
+      "undelivered": 697,
+      "final_cell": "1",
+      "handovers": [
+        {
+          "start_s": 40.142171427,
+          "end_s": 40.144035713,
+          "source": "1",
+          "target": "2",
+          "success": true,
+          "attempt_id": 1,
+          "source_rnti": "1",
+          "target_rnti": "4",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 40.140064281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 44.934671427,
+          "end_s": 44.936535713,
+          "source": "2",
+          "target": "1",
+          "success": true,
+          "attempt_id": 2,
+          "source_rnti": "4",
+          "target_rnti": "4",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 44.932564281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        }
+      ]
+    },
+    "1": {
+      "tx": 8800,
+      "rx": 4137,
+      "undelivered": 4663,
+      "final_cell": "2",
+      "handovers": [
+        {
+          "start_s": 7.539742855,
+          "end_s": 7.541535713,
+          "source": "2",
+          "target": "1",
+          "success": true,
+          "attempt_id": 1,
+          "source_rnti": "1",
+          "target_rnti": "3",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 7.537564281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 8.137278569,
+          "end_s": 8.139035713,
+          "source": "1",
+          "target": "2",
+          "success": true,
+          "attempt_id": 2,
+          "source_rnti": "3",
+          "target_rnti": "2",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 8.135064281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 14.537242855,
+          "end_s": 14.539035713,
+          "source": "2",
+          "target": "3",
+          "success": true,
+          "attempt_id": 3,
+          "source_rnti": "2",
+          "target_rnti": "3",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 14.535064281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 17.739671427,
+          "end_s": 17.741535713,
+          "source": "3",
+          "target": "2",
+          "success": true,
+          "attempt_id": 4,
+          "source_rnti": "3",
+          "target_rnti": "3",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 17.737564281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 37.322171427,
+          "end_s": 37.324035713,
+          "source": "2",
+          "target": "3",
+          "success": true,
+          "attempt_id": 5,
+          "source_rnti": "3",
+          "target_rnti": "4",
+          "gnb_completed": true,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 37.320064281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL",
+            "DL_DATA"
+          ]
+        },
+        {
+          "start_s": 49.542171427,
+          "end_s": 49.544035713,
+          "source": "3",
+          "target": "2",
+          "success": false,
+          "attempt_id": 6,
+          "source_rnti": "4",
+          "target_rnti": "5",
+          "gnb_completed": false,
+          "ue_end_ok": true,
+          "rrc_report_time_s": 49.540064281,
+          "post_ue_end_sinr_channels": [
+            "DL_CONTROL"
+          ]
+        }
+      ]
+    },
+    "2": {
+      "tx": 8800,
+      "rx": 8782,
+      "undelivered": 18,
+      "final_cell": "3",
+      "handovers": []
+    },
+    "3": {
+      "tx": 8800,
+      "rx": 8800,
+      "undelivered": 0,
+      "final_cell": "3",
+      "handovers": []
+    },
+    "4": {
+      "tx": 8800,
+      "rx": 8800,
+      "undelivered": 0,
+      "final_cell": "1",
+      "handovers": []
+    }
+  },
+  "radio_rows": 13500,
+  "sinr_rows": 240237,
+  "sinr_invalid_rows": 0,
+  "execution_provenance": [
+    {
+      "elapsed_s": 92.09443194699998,
+      "max_rss_kib": 155824,
+      "output_bytes": 72846425,
+      "resource_limits": {
+        "address_space_mib": 1536,
+        "cpu_seconds": 600,
+        "wall_seconds": 660
+      },
+      "rng_policy": "NrHelper::AssignStreams(StreamAssignmentParams): EPC, remote/UE/gNB nodes, beamforming, gNB/UE devices; native base offsets"
+    },
+    {
+      "elapsed_s": 198.7053096870004,
+      "max_rss_kib": 155392,
+      "output_bytes": 72846425,
+      "resource_limits": {
+        "address_space_mib": 1536,
+        "cpu_seconds": 600,
+        "wall_seconds": 660
+      },
+      "rng_policy": "NrHelper::AssignStreams(StreamAssignmentParams): EPC, remote/UE/gNB nodes, beamforming, gNB/UE devices; native base offsets"
+    }
+  ],
+  "repeatability": "ALL_RAW_CSV_BYTE_IDENTICAL",
+  "derived_sha256": {
+    "cell_population_v3.csv": "47041dff80a278cb9a8933a9731e21c8693d4cf4f9318532218a56ea0e0cf915",
+    "candidates_v3.csv": "eeafe86c45ca7e09eb69c08bc3246e1ce5c4b3bb86cc4ca4c72f43fdf9efe8c5",
+    "cell_qos_v3.csv": "8f7ae1be73c1aa6e8bb7fefef9455270952006c84cf30ffa59313d0714e7dc4c",
+    "unattributed_packets_v3.csv": "bb383b8670f1ad2b63cb20f1e339ba43aa6114ed2d98055e67c0f9dfddfb1ad2",
+    "qos_packets_v3.csv": "50928253bcd7bd37c019693f9e9cfe1f07ce0909e59574781905981a65d2a669",
+    "cell_prb_v3.csv": "cce20504f798e05952f8edcb41174a7fa5f9f6f4009473ef468030fead361086"
+  },
+  "analysis_sha256": {
+    "phase_d2.py": "3aa53b9e7f68d066b4d9e172caf89aa6b0cfb3428f3512a73984463521498d83",
+    "d2_schemas.json": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c",
+    "phase_c22_sinr.py": "0453d0e669e730ae06ee3ee142be86f03d1d54852e2da8f0cb2a681a6cc7872e"
+  },
+  "completion_status": "D2_NOT_COMPLETE_NATIVE_HANDOVER_GATE_BLOCKED",
+  "tests": {
+    "python_passed": 69,
+    "python_failed": 0,
+    "native_quick_suites": {
+      "nr-handover-target": "PASS"
+    },
+    "integration_run": "d2-20261030-smoke05"
+  },
+  "d1_regression": {
+    "d1_fresh_validation": "PASS",
+    "d1_twelve_csv_byte_identical": true,
+    "protected_files": 49,
+    "protected_unchanged": true
+  },
+  "limitations": [
+    "Native UE1 attempt6 target joining timeout; no successful D2 release gate.",
+    "Cell QoS attribution is S1-U ingress cohort, not proven radio delivery cell.",
+    "PRB counter combines UL/DL DATA and MSG3 allocations; bootstrap slot1 unobserved.",
+    "UE-reported population is not verified gNB context membership; final snapshot reveals discrepancy.",
+    "Underlying joining failure mechanism unverified; no radio/policy tuning to suppress failure.",
+    "Ping-pong/recovery metrics, broader seeds, actual queue load, graphs and AI are follow-up work."
+  ]
+}

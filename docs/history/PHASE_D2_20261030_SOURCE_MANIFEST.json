@@ -1,0 +1,18 @@
+{
+  "status": "D2_NOT_COMPLETE_NATIVE_HANDOVER_GATE_BLOCKED",
+  "files": {
+    "simulation/dt-d2-simulation.cc": "246a902301a9ea2c28955a576c5baddef3a8852132a17fc3682af3e95ae62c38",
+    "simulation/dt-d2-support.h": "1d98e01256107b7f5d74db31af377b6ffad9a5ce15cb5e081985df9db141fa9f",
+    "simulation/dt-d2-observers.h": "354bbe5271979b6864c50a1efc022ef0d62a269d439b5a91ad3881eb89f3f65d",
+    "analysis/phase_d2.py": "3aa53b9e7f68d066b4d9e172caf89aa6b0cfb3428f3512a73984463521498d83",
+    "analysis/run_d2.py": "2d3b0a68b8ede4e4f8a1f4d390edcff4999c6f669cb6a41d8fcd1643713d360b",
+    "analysis/d2_schemas.json": "4caf4f7432249fa91ac8551d1ac155715b3dae8f2fd09ac99d0ee7f99e07487c",
+    "analysis/test_phase_d2.py": "f200ea1491a3b9bef0c69fc75b5b4318f0c75e3007f2857995f87f7351e2dfa4",
+    "analysis/test_phase_d2_integration.py": "dc3c71f17a4ffd78d4123d396539c41e2b8fac06b028c43188095a259f0a6a22",
+    "docs/PHASE_D2_README.md": "b28ba5261208cfbc8f3d8e31a237083493254348ed75886ec7b6477fe7d5c849",
+    "docs/PHASE_D2_VALIDATION.json": "0f107e59413275f183ed7335d12225cbaa892abe67b6db888882469ac93489f2"
+  },
+  "unchanged_dependency_sha256": {
+    "analysis/phase_c22_sinr.py": "0453d0e669e730ae06ee3ee142be86f03d1d54852e2da8f0cb2a681a6cc7872e"
+  }
+}

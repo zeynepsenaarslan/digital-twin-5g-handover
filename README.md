@@ -36,6 +36,7 @@ C++ · Python 3 · ns-3.48 · 5G-LENA · Matplotlib · WSL2 / Ubuntu 24.04
 | C2.1 | Passive serving/neighbour RSRP and model-derived RSRQ | Validated |
 | C2.2 | Passive native DL DATA / CONTROL SINR | Validated |
 | C2.3 | Scientific PNG/SVG visualization | Validated |
+| D1 | Deterministic 2-gNB / 3-UE simulation with keyed UDP, PHY and FlowMonitor accounting | Validated foundation; QoS limitations below |
 | Future | Digital Twin state model, predictive validation, generative AI | Planned; not implemented |
 
 “Validated” describes the recorded local experiments and checks below, not general algorithm reliability.
@@ -106,6 +107,16 @@ The controlled 45 s run recorded **4,419 DL DATA** and **14,445 DL CONTROL** nat
 
 Linear power ratios are converted with `10*log10` only when valid. DATA averages all spectrum bands; CONTROL averages nonzero bands. The sample rates and averaging support differ. The first five CONTROL observations have native RNTI zero before attachment; these are preserved. This is serving-cell PHY observation, not neighbour SINR or SINR-triggered handover. No interpolation is used. Dense full-duration SVG point layers are rasterized; labels and axes remain vector.
 
+## Phase D1: measured multi-UE foundation
+
+`--scenario=legacy` remains default. `--scenario=d1 --enableHandover=1 --simTime=45` selects three deterministic trajectories on the same two sites and A3 parameters. Per-UE identities, actual successful UDP TX/RX, FlowMonitor tuples and repeated handover attempts are checked separately; RNTI is not a global identity.
+
+The recorded D1 run measured TX/RX of **4300/4113**, **4300/4189**, **4300/4300** for UE0/1/2. UE0 completed two real A3-RSRP handovers (1→2 at30.142457139 s,2→1 at34.534671427 s); UE1/2 did not hand over. All31 Python tests passed. Legacy45's seven CSVs remain byte-identical to the preserved C2.2 reference; legacy30 also matches its six earlier CSVs.
+
+The298 undelivered packets at45 s are not all attributable to handover: UE1 also loses packets without a handover. FlowMonitor classifies27 as lost and271 as unresolved under its10 s default timeout; application end-of-run missing counts are kept distinct. This validates measurement/accounting, not strong QoS, paper reproduction or a causal benefit. Radio/beam/load causes need controlled follow-up.
+
+[Scenario, commands and limitations](docs/PHASE_D1_README.md) · [validation evidence](docs/PHASE_D1_VALIDATION.json) · [mobility](figures/d1_mobility.png) · [radio](figures/d1_radio.png) · [SINR](figures/d1_sinr.png) · [QoS](figures/d1_qos.png) · [serving history](figures/d1_serving.png).
+
 ## Repository layout
 
 ```text
@@ -123,7 +134,7 @@ Tests remain beside the Python modules so their existing imports and discovery c
 **This repository is not an ns-3 installation.** It does not contain the simulator, NR module, binaries, or virtual environment.
 
 1. Prepare an external compatible ns-3.48 + 5G-LENA checkout. The observed NR commit and API requirements are recorded in [reproduction instructions](docs/REPRODUCIBILITY.md).
-2. Copy `simulation/dt-handover-simulation.cc` into a **fresh** `scratch/` location in that external checkout. Do not overwrite an existing research simulation.
+2. Copy both `simulation/dt-handover-simulation.cc` and `simulation/dt-d1-support.h` beside each other into a **fresh** `scratch/` location in that external checkout. Do not overwrite an existing research simulation.
 3. Configure/build through that checkout's `ns3` wrapper with `-j 1`.
 4. Run baseline and B3 into fresh directories. Run the Python tools from this repository, passing those external data paths.
 
@@ -137,7 +148,7 @@ The [complete guide](docs/REPRODUCIBILITY.md) includes safe integration, simulat
 
 ## Scientific limitations
 
-- One UE, two cells, one seed/run: no confidence intervals or multi-seed reliability claim.
+- The single-UE baseline and the D1 three-UE extension each use one seed/run: no confidence intervals or multi-seed reliability claim.
 - Unequal 30 s and 45 s experiments do not support causal claims about handover benefits.
 - RSRP is a PHY trace in dBm; it is not a quantized RRC report value.
 - RSRQ is derived by the installed model; independently validated standards compliance is not claimed.

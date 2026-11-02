@@ -24,11 +24,14 @@ test -d "$NS3_ROOT/contrib/nr"
 python3 - <<'CHECK'
 import os
 from pathlib import Path
-source = Path(os.environ['RESEARCH_ROOT'])/'simulation/dt-handover-simulation.cc'
-target = Path(os.environ['NS3_ROOT'])/'scratch/dt-handover-simulation.cc'
-# Exclusive creation refuses to overwrite any existing simulation.
-with target.open('xb') as stream:
-    stream.write(source.read_bytes())
+names = ['dt-handover-simulation.cc', 'dt-d1-support.h']
+sources = [Path(os.environ['RESEARCH_ROOT'])/'simulation'/name for name in names]
+targets = [Path(os.environ['NS3_ROOT'])/'scratch'/name for name in names]
+if any(target.exists() for target in targets):
+    raise SystemExit('Refuse to overwrite existing simulation/helper')
+for source, target in zip(sources, targets):
+    with target.open('xb') as stream:
+        stream.write(source.read_bytes())
 CHECK
 ```
 
@@ -114,3 +117,15 @@ The current simulation also writes `sinr_measurements.csv`. Rebuild after copyin
 ```
 
 These commands require actual run data and fresh output directories. See [C2.2 API and validation details](PHASE_C22_README.md). The new validator compares six legacy files including radio_measurements.csv; the C2.1 validator compares five. Reference equality is deliberately strict and is not a guarantee across different dependency versions or scenarios.
+
+## D1 three-UE scenario
+
+Both simulation files above are required even for default legacy mode. Rebuild after copying them. The selectors preserve legacy output schemas; D1 exports separately named v2 schemas. From the external checkout, using fresh paths:
+
+```bash
+./ns3 run "dt-handover-simulation --scenario=d1 --enableHandover=1 --simTime=45 --outputDir=${B3}-d1" --no-build
+cd "$RESEARCH_ROOT"
+.venv-analysis/bin/python -B analysis/phase_d1.py --run-dir "${B3}-d1" --output-dir "${B3}-d1-analysis"
+```
+
+Do not run old single-UE analyzers on D1 v2 CSVs. See [D1 measurements and limitations](PHASE_D1_README.md). Existing Python requirements suffice; no upstream library changes or additional packages are needed. The recorded D1 return handover and losses are actual observations, not required outcomes for another toolchain/scenario. D1 does not claim paper-equivalent traffic, full5G SA or Digital Twin implementation.
