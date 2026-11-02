@@ -5,10 +5,13 @@
 With the maintainer's explicit approval on 19 October 2026, the following project research source files are distributed under **GNU General Public License version 2 only**, SPDX identifier **GPL-2.0-only**:
 
 - `simulation/dt-handover-simulation.cc`
+- `simulation/dt-d1-support.h`
 - `analysis/phase_c1_qos.py`
 - `analysis/phase_c23_plots.py`
 - `analysis/phase_c22_sinr.py`
 - `analysis/test_phase_c22_sinr.py`
+- `analysis/phase_d1.py`
+- `analysis/test_phase_d1.py`
 - `analysis/validate_phase_c21_radio.py`
 - `analysis/test_phase_c1_qos.py`
 - `analysis/test_phase_c23_plots.py`

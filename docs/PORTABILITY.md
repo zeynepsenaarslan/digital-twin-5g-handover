@@ -1,6 +1,6 @@
 # Portability and provenance notes
 
-The simulation and Python source/test files are byte-identical copies of the working research versions. See `source-manifest.json` for source-relative locations, byte sizes, and SHA-256 values. No original implementation logic was refactored during repository extraction.
+The simulation and Python source/test files are byte-identical copies of the working research versions. See `source-manifest.json` for source-relative locations, byte sizes, and SHA-256 values. No original implementation logic was refactored during repository extraction. Later D1 work adds a separate helper/selector while verifying legacy byte regression; both simulation files must now be copied together.
 
 - CLI paths are supplied by the caller; the Python code has no fixed `/home/...` input dependency.
 - The main C++ program defaults to relative `dt-output`, refuses overwrites, and must be compiled in an external ns-3/NR checkout. It uses C++ filesystem support supplied by that environment.
@@ -13,3 +13,5 @@ The simulation and Python source/test files are byte-identical copies of the wor
 - Recorded results use seed 1/run 1. New toolchains, dependency versions, model changes, and different inputs may alter outputs. Byte-for-byte agreement must be checked rather than assumed.
 
 Only research implementation files were extracted. No secrets, `.git` metadata, credentials, upstream code tree, dependency source, binaries, backup directory, or virtual environment was copied.
+
+D1 uses its own v2 producer/analyzer for three UEs; original C1/C2.1/C2.3 single-UE assumptions remain intentionally in the legacy tools. Per-flow keys, packet-size/rate contracts and the documented D1 site IDs constrain the D1 validator; it is not an arbitrary-scale graph or network analysis library.

@@ -20,6 +20,12 @@
       "bytes": 18147
     },
     {
+      "path": "analysis/phase_d1.py",
+      "original_relative_path": "analysis/phase_d1.py",
+      "sha256": "41fa06fd988163144874d369ae0aee6e0836419b88a0f791f2d7a7ee9cfd8f80",
+      "bytes": 21271
+    },
+    {
       "path": "analysis/requirements-lock.txt",
       "original_relative_path": "analysis/requirements-lock.txt",
       "sha256": "c21f471fb3b67fc1b596c5c0a1d25b80cbf1abcc237057261d1a441e62a48166",
@@ -50,6 +56,12 @@
       "bytes": 3495
     },
     {
+      "path": "analysis/test_phase_d1.py",
+      "original_relative_path": "analysis/test_phase_d1.py",
+      "sha256": "9359b357416cd1adda2ce64d3008a2e7ecec562d649662d9474ebe9fa8116a68",
+      "bytes": 4203
+    },
+    {
       "path": "analysis/validate_phase_c21_radio.py",
       "original_relative_path": "analysis/validate_phase_c21_radio.py",
       "sha256": "3848e5fb00331029510bd98ba1733c0f166f129e97ec93dc0214481e9196ccf6",
@@ -60,6 +72,12 @@
       "original_relative_path": "analysis/PHASE_C22_README.md",
       "sha256": "6f7b9756a35b51810edd9cb3a95f7f736f244d3a3632135eef6f6816e4ce98c2",
       "bytes": 7854
+    },
+    {
+      "path": "docs/PHASE_D1_README.md",
+      "original_relative_path": "analysis/PHASE_D1_README.md",
+      "sha256": "3370bc19e477c42f8cee03899ce0ea0bbf9f12147cc93531f6c3740daa0ab32c",
+      "bytes": 15581
     },
     {
       "path": "docs/history/PHASE_C21_README.md",
@@ -78,6 +96,36 @@
       "original_relative_path": "dt-output/phase-c21-20261017-170148-b3-45s/handover_events.csv",
       "sha256": "b2e10e493c1ed3c80dfde496e59ccac74c2910cb12eef6c2ecf8cd362c13ec81",
       "bytes": 168
+    },
+    {
+      "path": "figures/d1_mobility.png",
+      "original_relative_path": "dt-output/phase-d1-20261019-204330-release-report/d1_mobility.png",
+      "sha256": "970fcb36979e73387b51744fcfd723d8eae27ed46b19452ba6d931a553574492",
+      "bytes": 72646
+    },
+    {
+      "path": "figures/d1_qos.png",
+      "original_relative_path": "dt-output/phase-d1-20261019-204330-release-report/d1_qos.png",
+      "sha256": "27bb3f1feb33d40393358799a5c3c48ccfbc36d348fa1723514c0684dc1e49ce",
+      "bytes": 342017
+    },
+    {
+      "path": "figures/d1_radio.png",
+      "original_relative_path": "dt-output/phase-d1-20261019-204330-release-report/d1_radio.png",
+      "sha256": "9ecbca3c6d4f795a8d30f9ee469b80b84494b921abe2b2c168160b4e14a38ed3",
+      "bytes": 667710
+    },
+    {
+      "path": "figures/d1_serving.png",
+      "original_relative_path": "dt-output/phase-d1-20261019-204330-release-report/d1_serving.png",
+      "sha256": "fc5468babfbff13e1060e5bf125257fccb4b272df71e1c8507bbec7460cf0df8",
+      "bytes": 131147
+    },
+    {
+      "path": "figures/d1_sinr.png",
+      "original_relative_path": "dt-output/phase-d1-20261019-204330-release-report/d1_sinr.png",
+      "sha256": "6b1d9ad39e1c4782dcfe8be080ddc34d655ce86a7ee27c7e57e003c443d92a80",
+      "bytes": 614431
     },
     {
       "path": "figures/handover_aligned.svg",
@@ -116,10 +164,16 @@
       "bytes": 103551
     },
     {
+      "path": "simulation/dt-d1-support.h",
+      "original_relative_path": "scratch/dt-d1-support.h",
+      "sha256": "c0245830a48e7cee4b624a8859c38066bd749cd7d9faa4159b7d7aa80ef93450",
+      "bytes": 22430
+    },
+    {
       "path": "simulation/dt-handover-simulation.cc",
       "original_relative_path": "scratch/dt-handover-simulation.cc",
-      "sha256": "82c97ce5795fc63dea8392c8c8e5be63753aa4a3ae608a1fb474074b80f6757d",
-      "bytes": 39216
+      "sha256": "47640343b474f18fd3a8e6161153c00832c51b1e0e23f4e1e0faaf6baa329c42",
+      "bytes": 39852
     }
   ]
 }

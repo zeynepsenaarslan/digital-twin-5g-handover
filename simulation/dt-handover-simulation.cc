@@ -545,6 +545,8 @@ class UeMobilityLogger
 
 } // namespace
 
+#include "dt-d1-support.h"
+
 int main(int argc, char* argv[])
 {
     // Configurable parameters
@@ -565,6 +567,7 @@ int main(int argc, char* argv[])
 
     std::string outputDir = "dt-output";
     bool enableHandover = false;
+    std::string scenario = "legacy";
 
     CommandLine cmd(__FILE__);
 
@@ -581,7 +584,16 @@ int main(int argc, char* argv[])
     cmd.AddValue("outputDir", "CSV output directory", outputDir);
     cmd.AddValue("enableHandover", "Enable A3-RSRP X2 handover and real RRC (B3)", enableHandover);
 
+    cmd.AddValue("scenario", "legacy (default, 1 UE) or d1 (3 deterministic UEs)", scenario);
     cmd.Parse(argc, argv);
+    NS_ABORT_MSG_IF(scenario != "legacy" && scenario != "d1", "Unknown scenario");
+    if (scenario == "d1")
+    {
+        NS_ABORT_MSG_IF(ueSpeed != 5.0 || gnbSeparation != 300.0 || gnbHeight != 25.0 ||
+                        ueHeight != 1.5 || ueStartX != 20.0 || ueOffsetY != 20.0,
+                        "D1 has fixed trajectories/topology; legacy mobility flags are unsupported");
+        return d1::Run(simTime, samplingMs, seed, run, enableHandover, outputDir);
+    }
 
     NS_ABORT_MSG_IF(samplingMs == 0, "samplingMs must be > 0");
     NS_ABORT_MSG_IF(simTime <= 0.0, "simTime must be > 0");
