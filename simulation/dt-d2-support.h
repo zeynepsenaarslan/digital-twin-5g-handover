@@ -8,6 +8,8 @@
 #include <memory>
 #include <set>
 
+#include "dt-d2-diagnostics.h"
+
 namespace d2
 {
 /**
@@ -334,10 +336,13 @@ struct Infrastructure
  * @param handover Whether to enable unchanged A3-RSRP real-RRC X2 behavior.
  * @param turn Outbound duration before reversal; stop at twice this time.
  * @param output Fresh output directory.
+ * @param diagnostics Enable passive D2 timeline.
+ * @param ueTxPower Explicit fixed UE power in dBm for all five UEs.
+ * @param powerProbe Opt-in seed-1 causal experiment, requiring baseline 2 dBm.
  * @return Zero for validated simulation, nonzero for failed checks.
  */
 inline int Run(double duration, uint32_t samplingMs, uint32_t seed, uint32_t run,
-               bool handover, double turn, const std::string& output)
+               bool handover, double turn, const std::string& output, bool diagnostics=false, double ueTxPower=23, bool powerProbe=false)
 {
     NS_ABORT_MSG_IF(!std::isfinite(duration) || !std::isfinite(turn) || turn <= 1 || 2*turn >= duration-1 || samplingMs == 0, "Invalid D2 time configuration");
     NS_ABORT_MSG_IF(std::filesystem::exists(output), "D2 requires a fresh output directory");
@@ -376,6 +381,14 @@ inline int Run(double duration, uint32_t samplingMs, uint32_t seed, uint32_t run
     }
     auto [bandwidth,bwps] = nr->CreateBandwidthParts(
         {CcBwpCreator::SimpleOperationBandConf(3.5e9,20e6,1)}, "UMa");
+    NS_ABORT_MSG_IF(!std::isfinite(ueTxPower) || (powerProbe && (!diagnostics || ueTxPower!=2 || seed!=1 || run!=1)),"Power probe requires diagnostic seed/run 1/1 and 2 dBm baseline");
+    nr->SetUePhyAttribute("TxPower",DoubleValue(ueTxPower));
+    std::ofstream profile;
+    profile.open(output+"/radio_profile.json");
+    NS_ABORT_MSG_IF(!profile,"Cannot open radio profile");
+    profile << "{\"ue_tx_power_dbm\":" << ueTxPower << ",\"uplink_power_control\":false,\"joining_power_probe\":" << (powerProbe ? "true" : "false") << "}\n";
+    profile.close();
+    NS_ABORT_MSG_IF(profile.fail(),"Radio profile write failed");
     auto gd = nr->InstallGnbDevice(gnbs,bwps); auto ud = nr->InstallUeDevice(ues,bwps);
     for (uint32_t i=0;i<3;++i)
     {
@@ -431,6 +444,8 @@ inline int Run(double duration, uint32_t samplingMs, uint32_t seed, uint32_t run
     Open(flows,output+"/flow_monitor_v3.csv","flow_monitor_id,ue_id,source_ip,destination_ip,source_port,destination_port,protocol,tx_packets,rx_packets,tx_ip_bytes,rx_ip_bytes,lost_packets,unresolved_packets");
     RadioMeasurementLogger radio(output+"/radio_measurements.csv");
     SinrMeasurementLogger sinr(output+"/sinr_measurements.csv");
+    std::unique_ptr<JoiningDiagnostics> diag;
+    if (diagnostics) { diag=std::make_unique<JoiningDiagnostics>(output+"/diagnostics",gd,DynamicCast<NrUeNetDevice>(ud.Get(1)),powerProbe); }
     std::vector<std::unique_ptr<State>> states; Dispatcher dispatcher; dispatcher.measurements=&rrcReports;
     for (uint32_t i=0;i<5;++i)
     {
@@ -527,7 +542,8 @@ inline int Run(double duration, uint32_t samplingMs, uint32_t seed, uint32_t run
     for (uint32_t i=0;i<5;++i)
     {
         auto phy=NrHelper::GetUePhy(ud.Get(i),0);
-        for (const auto* name : {"TxPower","NoiseFigure","UeMeasurementsFilterPeriod"}) { Setting(settings,"UE",i,phy,name,"library_default"); }
+        Setting(settings,"UE",i,phy,"TxPower","explicit");
+        for (const auto* name : {"NoiseFigure","UeMeasurementsFilterPeriod"}) { Setting(settings,"UE",i,phy,name,"library_default"); }
     }
     for (const auto& [scope,devices] : std::vector<std::pair<std::string,NetDeviceContainer>>{{"gNB_array",gd},{"UE_array",ud}})
     {
@@ -564,6 +580,7 @@ inline int Run(double duration, uint32_t samplingMs, uint32_t seed, uint32_t run
             contexts << ',' << s->pendingGnb.size() << '\n';
         }
     }
+    if (diag) { diag->Close(); }
     radio.Close(); sinr.Close();
     for (auto* stream : {&registry,&packets,&events,&summary,&flows,&cells,&sampler.mobility,&sampler.serving,&rrcReports,&config,&x2,&traces,&infrastructure.slots,&infrastructure.ingress,&settings,&contexts,&infrastructure.failures}) { stream->close(); NS_ABORT_MSG_IF(stream->fail(),"D2 CSV write failure"); }
     Simulator::Destroy();

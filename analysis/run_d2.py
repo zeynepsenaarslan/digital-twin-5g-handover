@@ -30,6 +30,9 @@ def main():
     parser.add_argument('--sampling-ms',type=int,default=30)
     parser.add_argument('--seed',type=int,default=1)
     parser.add_argument('--run',type=int,default=1)
+    parser.add_argument('--ue-tx-power',type=float)
+    parser.add_argument('--diagnose-joining',action='store_true')
+    parser.add_argument('--joining-power-probe',action='store_true')
     args=parser.parse_args(); root=args.ns3_root.resolve();output=args.output_dir.resolve()
     if output.exists():parser.error('Output directory must be fresh')
     version=(root/'VERSION').read_text().strip()
@@ -43,6 +46,9 @@ def main():
     hashes={str(p.relative_to(root)):digest(p) for p in files if p.is_file()}
     command=[str(executable),f'--simTime={args.sim_time}',f'--turnTime={args.turn_time}',
              f'--samplingMs={args.sampling_ms}',f'--seed={args.seed}',f'--run={args.run}',f'--outputDir={output}']
+    if args.ue_tx_power is not None:command.append(f'--ueTxPower={args.ue_tx_power}')
+    if args.diagnose_joining:command.append('--diagnoseJoining=1')
+    if args.joining_power_probe:command.append('--joiningPowerProbe=1')
     started=time.time();begin=time.monotonic()
     with output.with_suffix('.log').open('x') as log:
         child=subprocess.Popen(command,cwd=root,stdout=log,stderr=subprocess.STDOUT,preexec_fn=limits)

@@ -29,6 +29,8 @@ using namespace ns3;
  */
 int main(int argc, char* argv[])
 {
+    bool diagnostics=false, powerProbe=false;
+    double ueTxPower=23;
     double duration=90, turn=40;
     uint32_t samplingMs=30, seed=1, run=1;
     std::string output="dt-output/d2";
@@ -39,6 +41,9 @@ int main(int argc, char* argv[])
     cmd.AddValue("seed","RNG seed",seed);
     cmd.AddValue("run","RNG run",run);
     cmd.AddValue("outputDir","Fresh D2 output directory",output);
+    cmd.AddValue("diagnoseJoining","Passive UE1 joining timeline",diagnostics);
+    cmd.AddValue("ueTxPower","Explicit D2 UE power [dBm]; historical baseline was inherited 2",ueTxPower);
+    cmd.AddValue("joiningPowerProbe","Opt-in causal power step at the recorded UE1 RA event",powerProbe);
     cmd.Parse(argc,argv);
-    return d2::Run(duration,samplingMs,seed,run,true,turn,output);
+    return d2::Run(duration,samplingMs,seed,run,true,turn,output,diagnostics,ueTxPower,powerProbe);
 }

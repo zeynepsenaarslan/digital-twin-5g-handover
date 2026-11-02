@@ -257,6 +257,20 @@ def link_failures(failures, intervals):
         f.update(attempt_id=matched['attempt_id'],attempt_link_valid=1)
 
 
+def radio_profile(run):
+    """Distinguish the historical inherited budget from explicit D2/probe profiles."""
+    path=run/'radio_profile.json'
+    if not path.exists():
+        return dict(ue_tx_power_dbm=2.0,uplink_power_control=False,joining_power_probe=False,origin='library_default')
+    profile=json.loads(path.read_text())
+    if set(profile)!={'ue_tx_power_dbm','uplink_power_control','joining_power_probe'} or profile['uplink_power_control'] is not False or not isinstance(profile['joining_power_probe'],bool):
+        raise ValueError('Invalid D2 radio profile')
+    profile['ue_tx_power_dbm']=finite(profile['ue_tx_power_dbm'])
+    if profile['joining_power_probe'] and profile['ue_tx_power_dbm']!=2:raise ValueError('Power probe must retain the 2 dBm baseline')
+    profile['origin']='explicit'
+    return profile
+
+
 def validate(run, allow_pending=False):
     """Check raw producer evidence without writing or repairing inputs."""
     if {p.name for p in run.glob('*.csv')} != set(SCHEMAS):
@@ -317,6 +331,8 @@ def validate(run, allow_pending=False):
             expected.add(('gNB',r['node_id'],'','',c,'0',name,source))
     if len(traces)!=len(expected) or actual!=expected:
         raise ValueError('Trace registry duplicate/missing/wrong binding')
+    profile=radio_profile(run)
+    if (run/'radio_profile.json').exists():hashes['radio_profile.json']=hashlib.sha256((run/'radio_profile.json').read_bytes()).hexdigest()
     settings=list(rows(run,'radio_settings_v3.csv'))
     setting_keys={(r['scope'],r['id'],r['attribute']) for r in settings}
     expected_settings=set()
@@ -334,6 +350,10 @@ def validate(run, allow_pending=False):
         raise ValueError('Missing/duplicate effective settings')
     for r in settings:
         explicit=(r['scope']=='gNB' and r['attribute'] in ('Numerology','TxPower')) or (r['scope']=='channel' and r['attribute']=='Frequency')
+        if r['scope']=='UE' and r['attribute']=='TxPower':
+            explicit=profile['origin']=='explicit'
+            expected_power=23 if profile['joining_power_probe'] and r['id']=='1' else profile['ue_tx_power_dbm']
+            if finite(r['value'])!=expected_power:raise ValueError('Effective UE TX power disagrees with profile')
         if not r['object_type'].startswith('ns3::') or not r['value'] or r['origin']!=('explicit' if explicit else 'library_default'):
             raise ValueError('Effective setting provenance mismatch')
     summaries = list(rows(run,'udp_summary_v3.csv')); summary=unique_registry(summaries,'ue_id',5)
@@ -478,8 +498,8 @@ def validate(run, allow_pending=False):
     cell_qos,qos_bins,qos_packets=ingress_qos(rows(run,'cell_ingress_v3.csv'),packets,registry,cells,end,allow_unattributed=allow_pending)
     unattributed=cell_qos.pop('_unattributed',[])
     if sum(t['undelivered'] for t in cell_qos.values())+len(unattributed)!=sum(int(s['lost_unique']) for s in summary.values()):raise ValueError('Cell/unattributed loss conservation')
-    result=dict(status='BLOCKED_NATIVE_HANDOVER' if failures or context_issues or pending or unattributed else 'VALIDATED_SINGLE_RUN',
-                unattributed_tx_without_ingress=len(unattributed),native_failures=failures,final_context_issues=context_issues,pending_gnb_completions=pending,duration_s=duration,config=config,input_sha256=hashes,
+    result=dict(status='BLOCKED_NATIVE_HANDOVER' if failures or context_issues or pending or unattributed else 'CAUSAL_EXPERIMENT' if profile['joining_power_probe'] else 'VALIDATED_SINGLE_RUN',
+                effective_radio_profile=profile,unattributed_tx_without_ingress=len(unattributed),native_failures=failures,final_context_issues=context_issues,pending_gnb_completions=pending,duration_s=duration,config=config,input_sha256=hashes,
                 simultaneous_two_neighbour_epochs=coverage,prb=prb,cell_qos=cell_qos,
                 ues={u:dict(tx=int(s['tx_packets']),rx=int(s['rx_packets']),undelivered=int(s['lost_unique']),
                             final_cell=s['final_cell_id'],handovers=intervals[u]) for u,s in summary.items()},
